@@ -49,6 +49,7 @@ We are always looking for more contributors!
 
 ## Inspiration / History
 Before `garnet` there was `infoset`, a python3 project that inspiration from the SourceForge based `switchmap` project. `switchmap` was written in PERL and designed to create tabular representations of network topologies. Early versions of `infoset` eventually had expanded features which included the polling of network devices for real time performance data. This data was presented via a web interface. The code became cumbersome and the original `infoset` was split into three componet parts.
+
 1. `infoset-ng`: An API for storing and retrieving real time data.
 2. `garnet`: A network / server performance charting web application that uses various types of agents for collecting real time data. `garnet` uses `infoset-ng` to store its data.
 3. `switchmap-ng` A python 3 based feature equivalent version of `switchmap`.
