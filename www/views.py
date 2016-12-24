@@ -35,7 +35,10 @@ def _jinja2_filter_datetime(timestamp):
     timestamp = time.strftime('%H:%M (%d-%m-%Y) ', time.localtime(timestamp))
     return timestamp
 
-
+@APP.route('/', methods=['GET']):
+def index_route():
+    return render_template('index.html')
+    
 @APP.route('/')
 def index():
     """Function for handling home route.
