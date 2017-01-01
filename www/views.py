@@ -7,7 +7,6 @@ Contains all routes that infoset's Flask webserver uses
 from datetime import datetime
 import time
 import operator
-from pprint import pprint
 
 # Pip imports
 from flask import render_template, jsonify, request
@@ -194,7 +193,10 @@ def graphs(idx_datapoint):
     # Get datapoint details
     datapoint_data = API.get(
         ('db/datapoint/getidxdatapoint/%s') % (idx_datapoint))
-    idx_agent = datapoint_data['idx_agent']
+    idx_deviceagent = datapoint_data['idx_device_agent']
+    deviceagent_data = API.get(
+        ('db/deviceagent/getidxdeviceagent/%s') % (idx_deviceagent))
+    idx_agent = deviceagent_data['idx_agent']
     agent_label = datapoint_data['agent_label']
 
     # Get agent details
