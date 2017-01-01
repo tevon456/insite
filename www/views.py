@@ -144,7 +144,7 @@ def search_device(idx_device, idx_agent):
 
     # Get datapoints charting device metrics
     datapoints = API.get(
-        ('db/datapoint/charted/%s/%s') % (idx_device, idx_agent))
+        ('db/datapoint/timeseries/%s/%s') % (idx_device, idx_agent))
     for data_dict in datapoints:
         # Create datapoint object
         idx_datapoint = data_dict['idx_datapoint']
@@ -193,7 +193,7 @@ def graphs(idx_datapoint):
     # Get datapoint details
     datapoint_data = API.get(
         ('db/datapoint/getidxdatapoint/%s') % (idx_datapoint))
-    idx_deviceagent = datapoint_data['idx_device_agent']
+    idx_deviceagent = datapoint_data['idx_deviceagent']
     deviceagent_data = API.get(
         ('db/deviceagent/getidxdeviceagent/%s') % (idx_deviceagent))
     idx_agent = deviceagent_data['idx_agent']
@@ -421,7 +421,7 @@ def _get_datapoints(idx_agent, idx_device):
 
     # Get charted data
     data_charted = API.get(
-        ('db/datapoint/charted/%s/%s') % (idx_device, idx_agent))
+        ('db/datapoint/timeseries/%s/%s') % (idx_device, idx_agent))
     data.extend(data_charted)
 
     # Get timefixed data
