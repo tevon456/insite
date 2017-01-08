@@ -35,10 +35,14 @@ def _jinja2_filter_datetime(timestamp):
     timestamp = time.strftime('%H:%M (%d-%m-%Y) ', time.localtime(timestamp))
     return timestamp
 
-@APP.route('/', methods=['GET']):
+@APP.route('/', methods=['GET'])
 def index_route():
     return render_template('index.html')
-    
+
+@APP.route('/<path:path>')
+def catch_all(path):
+    return render_template('index.html')
+'''
 @APP.route('/')
 def index():
     """Function for handling home route.
@@ -71,7 +75,7 @@ def index():
                            idx_agent=idx_agent,
                            idx_device=idx_device,
                            devicename=device)
-
+'''
 
 @APP.route('/search')
 def search():
