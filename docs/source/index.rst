@@ -6,9 +6,18 @@
 Welcome to Garnet's documentation!
 ==================================
 
+``garnet`` is Python 3 based application that polls devices for performance data which can then be viewed via a WebUI.
+
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
+
+   introduction
+   installation
+   configuration
+   operation
+   community
 
 
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Garnet documentation build configuration file, created by
-# sphinx-quickstart on Tue Jan 10 12:01:36 2017.
+# sphinx-quickstart on Tue Jan 10 12:50:10 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -34,7 +34,7 @@
 extensions = ['sphinx.ext.autodoc']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['ntemplates']
+templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -94,7 +94,7 @@ html_theme = 'alabaster'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['nstatic']
+html_static_path = ['_static']
 
 
 # -- Options for HTMLHelp output ------------------------------------------
