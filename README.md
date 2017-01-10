@@ -49,6 +49,7 @@ We are always looking for more contributors!
 
 ## Inspiration / History
 Before `garnet` there was `infoset`, a python3 project that inspiration from the SourceForge based `switchmap` project. `switchmap` was written in PERL and designed to create tabular representations of network topologies. Early versions of `infoset` eventually had expanded features which included the polling of network devices for real time performance data. This data was presented via a web interface. The code became cumbersome and the original `infoset` was split into three componet parts.
+
 1. `infoset-ng`: An API for storing and retrieving real time data.
 2. `garnet`: A network / server performance charting web application that uses various types of agents for collecting real time data. `garnet` uses `infoset-ng` to store its data.
 3. `switchmap-ng` A python 3 based feature equivalent version of `switchmap`.
@@ -93,7 +94,7 @@ Install `infoset-ng` on your `garnet` server. Make sure the `infoset-ng` API is 
 ### Install `garnet` Next
 Now clone the repository and copy the sample configuration file to its final location.
 ```
-$ git clone https://github.com/UWICompSociety/garnet
+$ git clone https://github.com/PalisadoesFoundation/garnet
 $ cd garnet
 $ export PYTHONPATH=`pwd`
 $ cp examples/etc/* etc/
@@ -181,13 +182,13 @@ There are many dragons to slay and kingdoms to conquer!
 Here are a few things to know.
 
 1. Contributions are always welcome. Contact our team for more.
-2. View our contributor guidelines here: https://github.com/UWICompSociety/garnet/blob/master/CONTRIBUTING.md
-3. View our guidelines for committing code here: https://github.com/UWICompSociety/garnet/blob/master/COMMITTERS.md
+2. View our contributor guidelines here: https://github.com/PalisadoesFoundation/garnet/blob/master/CONTRIBUTING.md
+3. View our guidelines for committing code here: https://github.com/PalisadoesFoundation/garnet/blob/master/COMMITTERS.md
 
 ## Mailing list
 Our current mailing list is: https://groups.google.com/forum/#!forum/gdg-jamaica
 ## New Features
-Visit our GitHub issues for a full list of features and bug fixes. https://github.com/UWICompSociety/garnet/issues
+Visit our GitHub issues for a full list of features and bug fixes. https://github.com/PalisadoesFoundation/garnet/issues
 ## Design Overview
 Visit our wiki's `garnet` document for the rationale of the design. http://wiki.palisadoes.org/index.php/garnet
 ## Sample Output
