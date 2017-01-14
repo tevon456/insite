@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import NavBar from './Navbar/Navbar.js';
 import Dashboard from './Dashboard/Dashboard.js';
-import Footer from './Footer/Footer.js';
+
+import { Router, Route, IndexRoute ,hashHistory } from 'react-router';
+const About = () => <div>About</div>;
 
 class App extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar></NavBar>
-        <Dashboard></Dashboard>
-        <Footer></Footer>
-      </div>
+      <Router history={ hashHistory }>
+        <Route path="/" component={ Dashboard }></Route>
+      </Router>
     )
   }
 }
