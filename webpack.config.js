@@ -23,8 +23,13 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'style!css!less'
       },
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+      { 
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
         loader: 'url-loader?limit=100000' 
+      },
+      { 
+        test: /\.json$/, 
+        loader: 'json-loader' 
       },
       {
         test:/vendor\.min.js$/,
