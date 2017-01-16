@@ -15,10 +15,10 @@ class Dashboard extends Component {
       <div>
         <NavBar></NavBar>
         <Col xs={12} md={12}>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={12} lg={3}>
             <DetailsBox></DetailsBox>
           </Col>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={12} lg={9}>
             <GraphBox></GraphBox>
           </Col>
         </Col>
