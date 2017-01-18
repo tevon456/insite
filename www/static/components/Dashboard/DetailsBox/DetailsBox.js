@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 
+import axios from 'axios';
+
 class DetailsBox extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+  
   }
 
   render() {
@@ -15,18 +21,6 @@ class DetailsBox extends Component {
           </tr>
           <tr>
             <td>Operating System</td>
-          </tr>
-          <tr>
-            <td>System Name</td>
-          </tr>
-          <tr>
-            <td>Contact</td>
-          </tr>
-          <tr>
-            <td>Location</td>
-          </tr>
-          <tr>
-            <td>Uptime</td>
           </tr>
         </tbody>
       </Table>
