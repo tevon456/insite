@@ -12,7 +12,9 @@ class BasicAreaChart extends Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      url: '/graphs/did/bytimestamp',
+      did: '130'
     }
   }
 
@@ -20,7 +22,7 @@ class BasicAreaChart extends Component {
   componentDidMount() {
     var _this = this;
 
-    axios.get('/graphs/did/bytimestamp/136')
+    axios.get(this.state.url + this.state.did)
       .then(function (response) {
 
         var data = response.data;
