@@ -7,6 +7,7 @@ Contains all routes that infoset's Flask webserver uses
 from datetime import datetime
 import time
 import operator
+import pprint
 
 # Pip imports
 from flask import render_template, jsonify, request
@@ -186,6 +187,49 @@ def search_device(idx_device, idx_agent):
         'search-device.html', agent_list=data)
 
 
+@APP.route('/initial')
+def initial():
+    """Function for handling fetching initial data.
+
+    Args:
+        None
+
+    Returns:
+        Initial device information
+
+    """
+    # Initialize key variables
+    idx_device = INFOSET.idx_device()
+    idx_agent = INFOSET.idx_agent()
+
+    # Get UID of _garnet agent
+    data = API.get(('agents/%s') % (idx_agent))
+    id_agent = data['id_agent']
+
+    # Get agent information
+    device = INFOSET.devicename()
+    agent_list = [data]
+    data_point_dict = _get_dp_label_idx(idx_device, idx_agent)
+    
+    # More specific device data
+    system = data_point_dict['system'][1]
+    version = data_point_dict['version'][1]
+    release = data_point_dict['release'][1]
+
+    initial_dict = {
+        'agent': idx_agent,
+        'id_agent': id_agent,
+        'device': device,
+        'system': system,
+        'version': version,
+        'release': release,
+        'agent_list': agent_list,
+        'datapoint_dict': data_point_dict
+    }
+
+    return jsonify(initial_dict)
+
+
 @APP.route('/graphs/did/<idx_datapoint>', methods=["GET", "POST"])
 def graphs(idx_datapoint):
     """Create graphs.
@@ -239,16 +283,16 @@ def fetch_graph(idx_datapoint):
     """
     # Get datapoint details
     datapoint_data = API.get(
-        ('db/datapoint/getidxdatapoint/%s') % (idx_datapoint))
+        ('datapoints/%s') % (idx_datapoint))
     agent_label = datapoint_data['agent_label']
 
     # Getting start and stop parameters from url
-    start = request.args.get('start')
-    stop = request.args.get('stop')
+    ts_stop = general.normalized_timestamp()
+    ts_start = ts_stop - (3600 * 24)
 
     # Get data and return
     results = API.get(
-        ('db/data/getidxdata/%s/%s/%s') % (idx_datapoint, start, stop))
+        ('datapoints/%s/data?ts_start=%s&ts_stop=%s') % (idx_datapoint, ts_start, ts_stop))
     data = _d3_converter(results, agent_label)
     return jsonify(data)
 
@@ -277,7 +321,7 @@ def fetch_graph_stacked(id_agent, stack_type):
     ts_start = ts_stop - (3600 * 24)
 
     # Get agent details
-    agent_data = API.get(('db/agent/getidagent/%s') % (id_agent))
+    agent_data = API.get(('agents/%s') % (id_agent))
     idx_agent = agent_data['idx_agent']
 
     # Define label values
@@ -337,18 +381,18 @@ def fetch_graph_stacked(id_agent, stack_type):
         pass
 
     values = []
+    data = []
     for idx_datapoint in datapoint_list:
         # Get datapoint details
         datapoint_data = API.get(
-            ('db/datapoint/getidxdatapoint/%s') % (idx_datapoint))
+            ('datapoints/%s') % (idx_datapoint))
         agent_label = datapoint_data['agent_label']
         results = API.get(
-            ('db/data/getidxdata/%s/%s/%s') % (
-                idx_datapoint, ts_start, ts_stop))
+            ('datapoints/%s/data?ts_start=%s&ts_stop=%s') % (idx_datapoint, ts_start, ts_stop))
 
         # Convert data to D3 format
-        data = _d3_converter(results, agent_label)
-        values.extend(data)
+        data = _d3_converter(results, data, agent_label)
+        values = data
 
     return jsonify(values)
 
@@ -362,7 +406,7 @@ def _datapoint_labels(idx_device, idx_agent, labels):
         labels: Labels to match
 
     Returns:
-        listing: List of datap
+        listing: List of datapoints
 
     """
     # Initialize key variables
@@ -428,19 +472,19 @@ def _get_datapoints(idx_agent, idx_device):
 
     # Get charted data
     data_charted = API.get(
-        ('db/datapoint/timeseries/%s/%s') % (idx_device, idx_agent))
+        ('datapoints?idx_deviceagent=%s&base_type=64') % (idx_device))
     data.extend(data_charted)
 
     # Get timefixed data
     data_timefixed = API.get(
-        ('db/datapoint/timefixed/%s/%s') % (idx_device, idx_agent))
+        ('datapoints?idx_deviceagent=%s') % (idx_device))
     data.extend(data_timefixed)
 
     # Return
     return data
 
 
-def _d3_converter(values, agent_label):
+def _d3_converter(values=[], chart_values=[], agent_label=''):
     """Convert API data to format that the D3 library will accept.
 
     Args:
@@ -452,10 +496,15 @@ def _d3_converter(values, agent_label):
 
     """
     # Initialize key variables
-    chart_values = []
-
+    agent_values = []
     # Assign data values to d3 dict
-    for timestamp, value in sorted(values.items()):
-        chart_values.append(
-            {'x': timestamp, 'y': value, 'group': agent_label})
+    if not chart_values:
+        for timestamp, value in sorted(values.items()):
+            chart_values.append({'timestamp': timestamp})
+            agent_values.append(value)
+    else:
+        for timestamp, value in sorted(values.items()):
+            agent_values.append(value)
+    for dicts, agent_value in zip(chart_values,agent_values):
+        dicts[agent_label] = agent_value
     return chart_values
