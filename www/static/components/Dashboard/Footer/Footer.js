@@ -8,6 +8,8 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
 
+import './Footer.less';
+
 class Footer extends Component {
   constructor(props) {
     super(props);
