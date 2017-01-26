@@ -23,13 +23,13 @@ class NavBar extends Component{
       <div className="NavBar">
         <ul>
           <li>
-            <Link to="/hosts">Hosts</Link>
+            <Link to="/hosts"><b>Hosts</b></Link>
           </li>
           <li>
-            <Link to="/"><img src="./static/img/garnet_logo.png" style={{'height':'30px','marginTop':'-5px'}}></img></Link>
+            <Link to="/"><img src="./static/img/garnet_logo.png" style={{'height':'35px',}}></img></Link>
           </li>
           <li>
-            <Link to="/hosts">Agents</Link>
+            <Link to="/hosts"><b>Agents</b></Link>
           </li>
         </ul>
       </div>
