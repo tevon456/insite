@@ -35,6 +35,7 @@ class Infoset(object):
         self.api = API(config)
 
         (self._idx_device, self._idx_agent) = self._garnet_device_agent()
+        
         if self._idx_device is None or self._idx_agent is None:
             log_message = ('Unable to contact API server.')
             log.log2die(1050, log_message)
@@ -94,7 +95,7 @@ class Infoset(object):
 
         """
         # Get device details and return
-        uri = ('db/device/getidxdevice/%s') % (self.idx_device())
+        uri = ('devices/%s') % (self.idx_device())
         device_data = self.api.get(uri)
         device = device_data['devicename']
 
@@ -115,10 +116,10 @@ class Infoset(object):
         idx_agent = 1
         idx_device = 1
         device_agents_indices = self.api.get(
-            'db/deviceagent/getalldeviceagents')
+            'deviceagents')
 
         if device_agents_indices is not None:
-            agents = self.api.get('db/agent/getallagents')
+            agents = self.api.get('agents')
 
             # Find infoset in agents
             for agent in agents:
@@ -208,14 +209,13 @@ class API(object):
 
         # Create API URL
         url = self._url(uri)
-
         # Return data
         try:
             result = requests.get(url)
             data = result.json()
-        except:
+        except Exception as e:
+            print(e)
             data = None
-
         # Return
         return data
 
