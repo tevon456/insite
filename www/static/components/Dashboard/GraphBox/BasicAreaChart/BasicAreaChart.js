@@ -13,8 +13,6 @@ class BasicAreaChart extends Component {
 
     this.state = {
       data: [],
-      url: '/graphs/did/bytimestamp',
-      did: '130'
     }
   }
 
@@ -22,7 +20,7 @@ class BasicAreaChart extends Component {
   componentDidMount() {
     var _this = this;
 
-    axios.get(this.state.url + this.state.did)
+    axios.get(this.props.url + '/' +this.props.did)
       .then(function (response) {
 
         var data = response.data;
@@ -61,12 +59,16 @@ class BasicAreaChart extends Component {
           <XAxis dataKey="x" ticks={this.getTicks(this.state.data)} tickFormatter={this.dateFormat} />
           <YAxis/>
           <CartesianGrid strokeDasharray="1 1"/>
-          <Tooltip formatter={this.dateFormat}/>
-          <Area name="Test" type='monotone' dataKey='y' stroke='#8884d8' fill='#8884d8' />
+          <Tooltip/>
+          <Area type='monotone' dataKey='y' stroke='#8884d8' fill='#8884d8' />
         </AreaChart>
       </ResponsiveContainer>
     )
   }
 }
 
+BasicAreaChart.defaultProps = {
+  url: '/graphs/did/bytimestamp',
+  did: '130'
+}
 export default BasicAreaChart;
