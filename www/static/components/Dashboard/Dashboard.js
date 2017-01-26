@@ -15,7 +15,6 @@ import axios from 'axios';
 import NavBar from '../Navbar/Navbar.js';
 import DetailsBox from './DetailsBox/DetailsBox.js';
 import GraphBox from './GraphBox/GraphBox.js';
-import NotificationPanel from './NotificationPanel/NotificationPanel.js';
 import Footer from './Footer/Footer';
 
 class Dashboard extends Component {
