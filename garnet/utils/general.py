@@ -8,6 +8,8 @@ import time
 import subprocess
 import locale
 import hashlib
+from datetime import datetime
+
 # Pip libraries
 import yaml
 
@@ -161,7 +163,7 @@ def normalized_timestamp(timestamp=None):
 
     # Process data
     if timestamp is None:
-        value = (int(time.time()) // interval) * interval
+        value = (int(datetime.utcnow().timestamp()) // interval) * interval
     else:
         value = (int(timestamp) // interval) * interval
     # Return
@@ -228,7 +230,7 @@ def delete_files(target_dir):
     if os.path.exists(target_dir) is False:
         log_message = ('Directory %s does not exist.') % (
             target_dir)
-        log.log2die(1013, log_message)
+        log.log2die_safe(1013, log_message)
 
     # Delete all files in the tmp folder
     for the_file in os.listdir(target_dir):
@@ -239,10 +241,10 @@ def delete_files(target_dir):
         except Exception as exception_error:
             log_message = ('Error: deleting files in %s. Error: %s') % (
                 target_dir, exception_error)
-            log.log2die(1014, log_message)
+            log.log2die_safe(1014, log_message)
         except:
             log_message = ('Unexpected error')
-            log.log2die(1015, log_message)
+            log.log2die_safe(1015, log_message)
 
 
 def cleanstring(data):

@@ -134,7 +134,7 @@ class Agent(object):
         if data[label]['base_type'] is not None:
             self.data['timeseries'].update(data)
         else:
-            self.data['other'].update(data)
+            self.data['timefixed'].update(data)
 
     def populate_single(self, label, value, base_type=None, source=None):
         """Populate a single value in the agent.
