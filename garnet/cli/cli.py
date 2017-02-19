@@ -23,6 +23,7 @@ from copy import deepcopy
 
 # pip3 libraries
 import requests
+import colorama
 
 # Garnet libraries
 from garnet.utils.daemon import Daemon
@@ -56,6 +57,10 @@ class CLI(object):
         # Initialize key variables
         self.parser = None
 
+        #Initialize terminal colors
+        colorama.init()
+
+
     def process(self, usage=None, additional_help=None):
         """Return all the CLI options.
 
@@ -67,6 +72,7 @@ class CLI(object):
                 - filename: Path to the configuration file
 
         """
+
         # Header for the help menu of the application
         parser = argparse.ArgumentParser(
             prog='garnet-cli',
@@ -80,41 +86,26 @@ class CLI(object):
         # Subparser for subcommands
         subparsers = parser.add_subparsers(dest='action')
 
+        build_text = colorama.Style.BRIGHT + 'build' + colorama.Style.RESET_ALL
+        serve_text = colorama.Style.BRIGHT + 'serve' + colorama.Style.RESET_ALL
+        logs_text = colorama.Style.BRIGHT + 'log' + colorama.Style.RESET_ALL
+        test_text = colorama.Style.BRIGHT + 'test' + colorama.Style.RESET_ALL
+
         # Parse build parameters
         build = subparsers.add_parser(
-            'build', help='Build and installs garnet dependencies')
-        build.add_argument(
-            '--post', action='store_true', help='Post test data.')
-        build.add_argument(
-            '--get', action='store_true', help='Get test data.')
+            build_text, help='Build and installs garnet dependencies')
 
         # Parse serve parameters
         serve = subparsers.add_parser(
-            'serve', help='Starts local garnet server')
-        serve.add_argument('--post', action='store_true', help='Post test data.')
-        serve.add_argument('--get', action='store_true', help='Get test data.')
+            serve_text, help='Starts local garnet server')
 
         # Parse logs parameters
         logs = subparsers.add_parser(
-            'logs', help='View latest garnet log file')
-        logs.add_argument('--post', action='store_true', help='Post test data.')
-        logs.add_argument('--get', action='store_true', help='Get test data.')
+            logs_text, help='View latest garnet log file')
 
         # Parse test parameters
         test = subparsers.add_parser(
-            'test', help='Tests connection to infoset-ng')
-        test.add_argument('--post', action='store_true', help='Post test data.')
-        test.add_argument('--get', action='store_true', help='Get test data.')
-
-        # CLI argument for stopping
-        parser.add_argument(
-            '--force',
-            default=False,
-            action='store_true',
-            help=textwrap.fill(
-                'Stops or restarts the agent daemon ungracefully when '
-                'used with --stop or --restart.', width=80)
-        )
+            test_text, help='Tests connection to infoset-ng')
 
         # Get the parser value
         self.parser = parser
@@ -140,38 +131,32 @@ class CLI(object):
         if args.action == 'build':
             self._build_cli()
             sys.exit(0)
-            if args.post is True:
-                api_test.infoset_post()
-                sys.exit(0)
-            if args.get is True:
-                api_test.infoset_get()
-                sys.exit(0)
         elif args.action == 'serve':
             self._serve_cli()
-            if args.post is True:
-                api_test.mdl_post()
-                sys.exit(0)
-            if args.get is True:
-                api_test.mdl_get()
-                sys.exit(0)
         elif args.action == 'logs':
-            if args.post is True:
-                api_test.mdl_post()
-                sys.exit(0)
-            if args.get is True:
-                api_test.mdl_get()
-                sys.exit(0)
+            self._logs_cli()
         elif args.action == 'test':
-            if args.post is True:
-                api_test.mdl_post()
-                sys.exit(0)
-            if args.get is True:
-                api_test.mdl_get()
-                sys.exit(0)
+            self._test_cli()
         else:
+            self._logo()
             parser.print_help()
             sys.exit(0)
         sys.exit(2)
+
+    def _logo(self):
+        colorama.init()
+        print(colorama.Fore.WHITE + colorama.Style.BRIGHT)
+        print("                                _   ")
+        print("                               | |  ")
+        print("     __ _  __ _ _ __ _ __   ___| |_ ")
+        print("    / _` |/ _` | '__| '_ \ / _ \ __|")
+        print("   | (_| | (_| | |  | | | |  __/ |_ ")
+        print("    \__, |\__,_|_|  |_| |_|\___|\__|")
+        print("     __/ |                          ")
+        print("    |___/                           ")
+        print("")
+        print("   v1.0.0")
+        print(colorama.Style.RESET_ALL + "")
 
     def _build_cli(self):
         os.system("python3 ./bin/setup.py")
