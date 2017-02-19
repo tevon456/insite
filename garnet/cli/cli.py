@@ -56,6 +56,7 @@ class CLI(object):
         """
         # Initialize key variables
         self.parser = None
+        self.config = configuration.Config()
 
         #Initialize terminal colors
         colorama.init()
@@ -86,26 +87,21 @@ class CLI(object):
         # Subparser for subcommands
         subparsers = parser.add_subparsers(dest='action')
 
-        build_text = colorama.Style.BRIGHT + 'build' + colorama.Style.RESET_ALL
-        serve_text = colorama.Style.BRIGHT + 'serve' + colorama.Style.RESET_ALL
-        logs_text = colorama.Style.BRIGHT + 'log' + colorama.Style.RESET_ALL
-        test_text = colorama.Style.BRIGHT + 'test' + colorama.Style.RESET_ALL
-
         # Parse build parameters
         build = subparsers.add_parser(
-            build_text, help='Build and installs garnet dependencies')
+            'build', help='Build and installs garnet dependencies')
 
         # Parse serve parameters
         serve = subparsers.add_parser(
-            serve_text, help='Starts local garnet server')
+            'serve', help='Starts local garnet server')
 
         # Parse logs parameters
         logs = subparsers.add_parser(
-            logs_text, help='View latest garnet log file')
+            'logs', help='View latest garnet log file')
 
         # Parse test parameters
         test = subparsers.add_parser(
-            test_text, help='Tests connection to infoset-ng')
+            'test', help='Tests connection to infoset-ng')
 
         # Get the parser value
         self.parser = parser
@@ -133,10 +129,13 @@ class CLI(object):
             sys.exit(0)
         elif args.action == 'serve':
             self._serve_cli()
+            sys.exit(0)
         elif args.action == 'logs':
             self._logs_cli()
+            sys.exit(0)
         elif args.action == 'test':
             self._test_cli()
+            sys.exit(0)
         else:
             self._logo()
             parser.print_help()
@@ -165,7 +164,8 @@ class CLI(object):
         os.system("python3 ./bin/server.py")
 
     def _logs_cli(self):
-        print("Logs")
+        log_file = self.config.log_file()
+        os.system("tail -f " + log_file)
 
     def _test_cli(self):
         print("Test")
