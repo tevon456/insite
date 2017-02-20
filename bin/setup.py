@@ -53,8 +53,17 @@ def main():
     script_name = (
         'pip3 install --user --upgrade --requirement %s'
         '') % (requirements_file)
-    garnet.utils.general.run_script(script_name)
+    os.system(script_name)
+    # garnet.utils.general.run_script(script_name)
+    
+    print('Installing required node modules')
+    npm = garnet.utils.general.search_file('npm')
+    if npm is None:
+        log_message = ('Cannot find "npm". Please install.')
+        log.log2die(1052, log_message)
 
-
+    npm_script_name = 'npm install'
+    os.system(npm_script_name)
+    # garnet.utils.general.run_script(npm_script_name)
 if __name__ == '__main__':
     main()
