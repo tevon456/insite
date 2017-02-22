@@ -110,7 +110,7 @@ def search():
             # Process enabled agents
             if enabled is True:
                 # Get agent data
-                agent_name = agent_data['name']
+                agent_name = agent_data['agent']
                 idx_agent = agent_data['idx_agent']
 
                 # Append to data
@@ -144,7 +144,7 @@ def search_device(idx_device, idx_agent):
 
     # Get agent details
     agent_data = API.get(('db/agent/getidxagent/%s') % (idx_agent))
-    agent_name = agent_data['name']
+    agent_name = agent_data['agent']
     id_agent = agent_data['id_agent']
 
     # Get a description of the datapoint
@@ -210,7 +210,7 @@ def initial():
     device = INFOSET.devicename()
     agent_list = [data]
     data_point_dict = _get_dp_label_idx(idx_device, idx_agent)
-    
+
     # More specific device data
     system = data_point_dict['system'][1]
     version = data_point_dict['version'][1]
@@ -252,7 +252,7 @@ def graphs(idx_datapoint):
 
     # Get agent details
     agent_data = API.get(('db/agent/getidxagent/%s') % (idx_agent))
-    agent_name = agent_data['name']
+    agent_name = agent_data['agent']
 
     # Get a description of the datapoint
     lang = language.Agent(agent_name)
