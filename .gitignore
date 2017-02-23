@@ -35,6 +35,8 @@ __pycache__/
 # Ignore files in these directories and ALL subdirectories
 data/**
 etc/**
+log/**
+cache/**
 www/static/img/**
 bin/agents/non-standard/**
 
