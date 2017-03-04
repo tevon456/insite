@@ -1,8 +1,6 @@
-astroid
-click
-colorama
 Flask
 Flask-RESTful
+colorama
 funcsigs
 isort
 itsdangerous
@@ -12,7 +10,6 @@ MarkupSafe
 mccabe
 mock
 nose
-numpy
 pbr
 pep257
 pep8
