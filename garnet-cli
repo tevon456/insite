@@ -17,7 +17,6 @@ try:
 except:
     print('You need to set your PYTHONPATH to include the Garnet library')
     sys.exit(2)
-from garnet.agents import check
 
 def main():
     """Process agent data.
