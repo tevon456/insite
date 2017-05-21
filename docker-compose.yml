@@ -1,20 +1,20 @@
 infoset:
-  build: .
   ports:
     - "6000:6000"
   links:
     - mysql
   hostname: localhost
-  environment:
-    PYTHONPATH: /infoset-ng
+  image: pr0x1m4/infosetng
 garnet:
-	ports:
-		- "8000:8000"
-	links:
-		-mysql
-	hostname: localhost
-	environment:
-		PYTHONPATH: /garnet
+  build: .
+  ports:
+    - "5000:5000"
+  links:
+    - infoset
+    - mysql
+  hostname: localhost
+  environment:
+    PYTHONPATH: /garnet
 mysql:
   hostname: localhost
   image: mysql:latest
