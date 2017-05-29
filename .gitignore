@@ -36,6 +36,7 @@ __pycache__/
 data/**
 log/**
 cache/**
+static/node_modules/**
 www/static/img/**
 bin/agents/non-standard/**
 

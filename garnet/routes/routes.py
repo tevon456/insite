@@ -20,7 +20,7 @@ from garnet.utils import log
 from garnet.metadata import language
 from garnet.utils.configuration import Config
 from garnet.utils import api
-from www import APP
+from garnet.routes import APP
 
 # Intialize API object to communiacate with the infoset API
 config = Config()
@@ -35,47 +35,16 @@ def _jinja2_filter_datetime(timestamp):
     timestamp = time.strftime('%H:%M (%d-%m-%Y) ', time.localtime(timestamp))
     return timestamp
 
+
 @APP.route('/', methods=['GET'])
 def index_route():
     return render_template('index.html')
 
+
 @APP.route('/<path:path>')
 def catch_all(path):
     return render_template('index.html')
-'''
-@APP.route('/')
-def index():
-    """Function for handling home route.
 
-    Args:
-        None
-
-    Returns:
-        Home Page
-
-    """
-    # Initialize key variables
-    idx_device = INFOSET.idx_device()
-    idx_agent = INFOSET.idx_agent()
-
-    # Get UID of _garnet agent
-    data = API.get(('db/agent/getidxagent/%s') % (idx_agent))
-    id_agent = data['id_agent']
-
-    # Get agent information
-    device = INFOSET.devicename()
-    agent_list = [data]
-    data_point_dict = _get_dp_label_idx(idx_device, idx_agent)
-
-    # Render the home page
-    return render_template('index.html',
-                           data=data_point_dict,
-                           agent_list=agent_list,
-                           id_agent=id_agent,
-                           idx_agent=idx_agent,
-                           idx_device=idx_device,
-                           devicename=device)
-'''
 
 @APP.route('/search')
 def search():
@@ -212,9 +181,9 @@ def initial():
     data_point_dict = _get_dp_label_idx(idx_device, idx_agent)
 
     # More specific device data
-    system = data_point_dict['system'][1]
-    version = data_point_dict['version'][1]
-    release = data_point_dict['release'][1]
+    system = "Linux"
+    version = "4.4.1"
+    release = "Linux"
 
     initial_dict = {
         'agent': idx_agent,
@@ -225,6 +194,36 @@ def initial():
         'release': release,
         'agent_list': agent_list,
         'datapoint_dict': data_point_dict
+    }
+
+    return jsonify(initial_dict)
+
+
+@APP.route('/settings')
+def settings():
+    """Function for handling fetching config data.
+
+    Args:
+        None
+
+    Returns:
+        Configuraation data information
+
+    """
+
+    initial_dict = {
+        'logFile': config.log_file(),
+        'logLevel': config.log_level(),
+        'agentCacheDirectory': config.agent_cache_directory(),
+        'language': config.language(),
+        'interval': config.interval(),
+        'agentSubprocesses': config.agent_subprocesses(),
+        'bindPort': config.bind_port(),
+        'apiServerName': config.api_server_name(),
+        'apiServerPort': config.api_server_port(),
+        'apiServerHTTPS': config.api_server_https(),
+        'apiServerURI': config.api_server_uri(),
+        'agents': config.agents()
     }
 
     return jsonify(initial_dict)
@@ -505,6 +504,6 @@ def _d3_converter(values=[], chart_values=[], agent_label=''):
     else:
         for timestamp, value in sorted(values.items()):
             agent_values.append(value)
-    for dicts, agent_value in zip(chart_values,agent_values):
+    for dicts, agent_value in zip(chart_values, agent_values):
         dicts[agent_label] = agent_value
     return chart_values

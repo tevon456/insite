@@ -15,7 +15,7 @@ else:
 
 """Garnet Flask server."""
 from garnet.utils import configuration
-from www import APP
+from garnet.routes import APP
 
 def main():
     """Get Flask server running.
