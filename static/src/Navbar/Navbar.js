@@ -31,6 +31,9 @@ class NavBar extends Component{
           <li>
             <Link to="/hosts"><b>Agents</b></Link>
           </li>
+          <li>
+            <Link to="/settings"><b>Settings</b></Link>
+          </li>
         </ul>
       </div>
     )

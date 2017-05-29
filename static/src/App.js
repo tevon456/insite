@@ -6,6 +6,7 @@
 
 import React, {Component} from 'react';
 import Dashboard from './Dashboard/Dashboard.js';
+import Settings from './Settings/Settings.js';
 
 import {Router, Route, hashHistory} from 'react-router';
 
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <Router history={hashHistory}>
         <Route path="/" component={Dashboard} />
+        <Route path="/settings" component={Settings} />
       </Router>
     );
   }
