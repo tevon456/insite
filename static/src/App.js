@@ -19,7 +19,7 @@ class App extends Component {
    * App entry point.
    * @return Main component
    */
-  render() {
+  render () {
     return (
       <Router history={hashHistory}>
         <Route path="/" component={Dashboard} />
