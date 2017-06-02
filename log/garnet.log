@@ -1,0 +1,3 @@
+2017-05-27 18:58:19,726 - garnet_file - CRITICAL - [mardii] (1052E): Cannot find python "pip3". Please install.
+2017-05-27 19:00:37,574 - garnet_file - CRITICAL - [mardii] (1052E): Cannot find python "pip3". Please install.
+2017-05-29 12:46:13,171 - garnet_file - CRITICAL - [mardii] (1050E): Unable to contact API server.
