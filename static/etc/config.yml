@@ -1,0 +1,34 @@
+log_file: log/garnet.log
+log_level: info
+agent_cache_directory: cache
+language: en
+interval: 100
+agent_subprocesses: 10
+listen_address: 0.0.0.0
+bind_port: 5000
+api_server_name: 0.0.0.0
+api_server_port: 6000
+api_server_https: False
+api_server_uri: /infoset/api/v1
+
+agents:
+    - agent_name: _garnet
+      agent_enabled: True
+      agent_filename: bin/agents/_garnet.py
+      monitor_agent_pid: True
+
+    - agent_name: linux
+      agent_enabled: False
+      agent_filename: bin/agents/linux.py
+      agent_port: 5001
+      monitor_agent_pid: True
+      agent_devicenames:
+        - 192.168.1.234
+
+    - agent_name: remote_linux_active
+      agent_enabled: False
+      agent_filename: bin/agents/remote_linux_active.py
+
+    - agent_name: remote_linux_passive
+      agent_enabled: False
+      agent_filename: bin/agents/remote_linux_passive.py
