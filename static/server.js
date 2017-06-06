@@ -1,3 +1,7 @@
+const Infoset = require("./utils/infoset.js");
+const API = require("./utils/api.js");
+const config = require("./utils/configuration.js");
+
 const http = require("http");
 const express = require("express");
 const httpProxy = require("http-proxy");
@@ -33,8 +37,17 @@ app.use(require("morgan")("short"));
   app.use(express.static(path.join(__dirname, "/")));
 })();
 
-app.all("/initial", (req, res) => {
-  proxy.web(req, res, { target: "http://localhost:5000" });
+app.get("/initial", (req, res) => {
+  var idx_device = Infoset.idx_device();
+  var idx_agent = Infoset.idx_agent();
+
+  var data;
+  data = API.get("agents/" + idx_agent);
+
+  return {
+    agent: "1",
+    idx_agent: "1"
+  };
 });
 
 app.get("/", (req, res) => {
