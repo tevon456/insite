@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
@@ -8,29 +9,23 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        query: {
-          presets: ["es2015", "react"]
-        }
+        use: ["babel-loader"]
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: "style!css!"
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.less$/,
-        exclude: /node_modules/,
-        loader: "style!css!less"
-      },
-      {
-        test: /vendor\.min.js$/,
-        exclude: /node_modules/,
-        loader: "imports?jQuery=jquery,$jquery,this=>window"
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "less-loader"]
+        })
       }
     ]
   },
@@ -38,12 +33,15 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: '"production"'
-      },
-      __DEVELOPMENT__: false
+        NODE_ENV: JSON.stringify("production")
+      }
     }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin({
+      filename: "css/bundle.css",
+      disable: false,
+      allChunks: true
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false

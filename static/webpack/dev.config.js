@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: "cheap-module-eval-source-map",
@@ -8,29 +9,23 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        query: {
-          presets: ["es2015", "react"]
-        }
+        use: ["babel-loader"]
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: "style!css!"
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.less$/,
-        exclude: /node_modules/,
-        loader: "style!css!less"
-      },
-      {
-        test: /vendor\.min.js$/,
-        exclude: /node_modules/,
-        loader: "imports?jQuery=jquery,$jquery,this=>window"
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "less-loader"]
+        })
       }
     ]
   },
@@ -42,9 +37,13 @@ module.exports = {
       },
       __DEVELOPMENT__: true
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new ExtractTextPlugin({
+      filename: "css/bundle.css",
+      disable: false,
+      allChunks: true
+    }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       jQuery: "jquery"
     })

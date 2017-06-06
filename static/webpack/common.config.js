@@ -22,48 +22,48 @@ const common = {
   },
 
   resolve: {
-    extensions: ["", ".jsx", ".js", ".json", ".scss"],
-    modulesDirectories: ["node_modules", PATHS.app]
+    extensions: ["*", ".jsx", ".js", ".json", ".less"],
+    modules: ["node_modules", PATHS.app]
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-woff"
+        use: ["url-loader?limit=10000&mimetype=application/font-woff"]
       },
       {
         test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-woff2"
+        use: ["url-loader?limit=10000&mimetype=application/font-woff2"]
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/octet-stream"
+        use: ["url-loader?limit=10000&mimetype=application/octet-stream"]
       },
       {
         test: /\.otf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-otf"
+        use: ["url-loader?limit=10000&mimetype=application/font-otf"]
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file"
+        use: ["file-loader"]
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=image/svg+xml"
+        use: ["url-loader?limit=10000&mimetype=image/svg+xml"]
       },
       {
         test: /\.js$/,
-        loaders: ["babel-loader"],
+        use: ["babel-loader"],
         exclude: /node_modules/
       },
       {
         test: /\.png$/,
-        loader: "file?name=[name].[ext]"
+        use: ["file-loader?name=[name].[ext]"]
       },
       {
         test: /\.jpg$/,
-        loader: "file?name=[name].[ext]"
+        use: ["file-loader?name=[name].[ext]"]
       }
     ]
   }
