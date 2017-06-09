@@ -37,6 +37,10 @@ app.use(require("morgan")("short"));
   app.use(express.static(path.join(__dirname, "/")));
 })();
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/index.html"));
+});
+
 app.get("/initial", (req, res) => {
   var idx_device = Infoset.idx_device();
   var idx_agent = Infoset.idx_agent();
@@ -48,18 +52,6 @@ app.get("/initial", (req, res) => {
     agent: "1",
     idx_agent: "1"
   };
-});
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/index.html"));
-});
-
-app.all(/^\/graph\/(.*)/, (req, res) => {
-  proxy.web(req, res, { target: "http://localhost:5000" });
-});
-
-app.all(/^\/datapoint\/(.*)/, (req, res) => {
-  proxy.web(req, res, { target: "http://localhost:5000" });
 });
 
 const server = http.createServer(app);
