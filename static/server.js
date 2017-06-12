@@ -1,15 +1,17 @@
-const Infoset = require("./utils/infoset.js");
-const API = require("./utils/api.js");
-const config = require("./utils/configuration.js");
-
+//Node Modules import
 const http = require("http");
 const express = require("express");
 const httpProxy = require("http-proxy");
-const path = require("path");
-
 const proxy = httpProxy.createProxyServer({});
-
+const path = require("path");
+const _ = require("lodash");
 const app = express();
+
+//Garnet imports
+const Infoset = require("./utils/infoset.js");
+const API = require("./utils/api.js");
+const config = require("./utils/configuration.js");
+const router = require("./routes/routes.js");
 
 app.use(require("morgan")("short"));
 
@@ -41,22 +43,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
 
-app.get("/initial", (req, res) => {
-  var idx_device = Infoset.idx_device();
-  var idx_agent = Infoset.idx_agent();
-
-  var data;
-  data = API.get("agents/" + idx_agent);
-
-  return {
-    agent: "1",
-    idx_agent: "1"
-  };
-});
+app.use(router);
 
 const server = http.createServer(app);
-server.listen(process.env.PORT || 3000, () => {
-  const address = server.address();
-  console.log("Listening on: %j", address);
-  console.log(" -> that probably means: http://localhost:%d", address.port);
+
+server.listen(config.bind_port(), () => {
+  console.log("Garnet started and listening on port " + server.address().port);
 });
