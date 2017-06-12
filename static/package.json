@@ -20,13 +20,13 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.js$": "<rootDir>/www/static/.transform/preprocessor.js"
+      "^.+\\.js$": "<rootDir>/.transform/preprocessor.js"
     },
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react"
     ],
     "moduleNameMapper": {
-      ".*\\.less$": "<rootDir>/www/static/.transform/lessTransformer.js"
+      ".*\\.less$": "<rootDir>/.transform/lessTransformer.js"
     },
     "moduleFileExtensions": [
       "js",
@@ -70,7 +70,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.9.0",
     "imports-loader": "^0.7.0",
-    "jest": "^19.0.2",
+    "jest": "^20.0.4",
     "jest-cli": "^19.0.2",
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
