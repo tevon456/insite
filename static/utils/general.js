@@ -2,6 +2,8 @@ const path = require("path");
 const fs = require("fs");
 const YAML = require("yamljs");
 
+const config = require("./configuration.js");
+
 exports.root_directory = function() {
   return path.resolve(__dirname, "..");
 };
@@ -14,7 +16,17 @@ exports.hashstring = function(string, sha, utf) {};
 
 exports.validate_timestamp = function(timestamp) {};
 
-exports.normalized_timestamp = function(timestamp) {};
+exports.normalized_timestamp = function(timestamp) {
+  let interval = config.interval();
+  let value;
+
+  if (timestamp === undefined) {
+    value = Math.floor(new Date().getTime() / interval);
+  } else {
+    value = Math.floor(timestamp / interval);
+  }
+  return value;
+};
 
 exports.dict2yaml = function(data_dict) {};
 

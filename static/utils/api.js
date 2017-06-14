@@ -1,5 +1,8 @@
+//Node Modules import/require
 const request = require("request");
 const trim = require("strman").trim;
+
+// Garnet Config Object
 const CONFIG = require("./configuration.js");
 
 //Default is set to http

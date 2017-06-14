@@ -1,9 +1,6 @@
 const path = require("path");
 const fs = require("fs");
 
-const general = require("./general.js");
-const config_directory = path.join(general.root_directory(), "/etc");
-
 // Default Config Object
 var CONFIG = {
   log_file: "log/garnet.log",
@@ -20,9 +17,32 @@ var CONFIG = {
   api_server_uri: "/infoset/api/v1"
 };
 
+const general = require("./general.js");
+const config_directory = path.join(general.root_directory(), "/etc");
+
 // If config.yaml is available, try to load
 if (fs.existsSync(path.join(config_directory, "config.yml")))
   CONFIG = general.read_yaml_file(path.join(config_directory, "config.yml"));
+
+exports.log_file = function() {
+  return CONFIG.log_file;
+};
+
+exports.log_level = function() {
+  return CONFIG.log_level;
+};
+
+exports.agent_cache_directory = function() {
+  return CONFIG.agent_cache_directory;
+};
+
+exports.language = function() {
+  return CONFIG.language;
+};
+
+exports.interval = function() {
+  return CONFIG.interval;
+};
 
 exports.listen_address = function() {
   return CONFIG.listen_address;
@@ -46,22 +66,6 @@ exports.api_server_https = function() {
 
 exports.api_server_uri = function() {
   return CONFIG.api_server_uri;
-};
-
-exports.log_file = function() {
-  return CONFIG.log_file;
-};
-
-exports.log_level = function() {
-  return CONFIG.log_level;
-};
-
-exports.language = function() {
-  return CONFIG.language;
-};
-
-exports.agent_cache_directory = function() {
-  return CONFIG.agent_cache_directory;
 };
 
 exports.agent_subprocesses = function() {
