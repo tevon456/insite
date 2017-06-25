@@ -15,10 +15,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'pip3 install setuptools'
-                sh 'pip3 install -r requirements.txt'
-                sh 'export PYTHONPATH=${PYTHONPATH}:$(pwd)/garnet/test'
-                sh 'python3 garnet/test/test_general.py'
+                sh 'cd static'
+                sh 'npm install'
+                sh 'npm run test'
             }
         }
         stage('Deploy') {
