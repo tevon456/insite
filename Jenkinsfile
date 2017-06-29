@@ -11,11 +11,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'npm run build'
             }
         }
         stage('Test') {
             steps {
-                sh 'cd static'
                 sh 'npm install'
                 sh 'npm run test'
             }
