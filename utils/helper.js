@@ -1,5 +1,33 @@
 const _ = require("lodash");
 
+function _datapoint_labels(idx_device, idx_agent, labels){
+
+	/**
+   * @param idx_device
+   * @param idx-agent
+   * @param labels
+   * 
+   * @returns listings
+   */
+
+   var listing = [];
+
+   var datapoints = _get_datapoints(idx_agent, idx_device);
+
+   for (var data_dict of datapoints) {
+    
+    		var	agent_label = data_dict['agent_label'];
+        	var idx_datapoint = data_dict['idx_datapoint'];
+
+        if(agent_label of labels)
+        {
+        	listing.append(idx_datapoint);
+        }
+    }
+
+    return listing;
+}
+
 function _d3_converter(values, chart_values, agent_label) {
   /**
    * @param values
@@ -24,3 +52,4 @@ function _d3_converter(values, chart_values, agent_label) {
     return chart_values;
   }
 }
+
