@@ -3,7 +3,7 @@ const _ = require ('lodash');
 function _datapoint_labels (idx_device, idx_agent, labels) {
   /**
    * @param idx_device
-   * @param idx-agent
+   * @param idx_agent
    * @param labels
    * 
    * @returns listings
@@ -23,6 +23,33 @@ function _datapoint_labels (idx_device, idx_agent, labels) {
     }
   }
   return listing;
+}
+
+function _get_dp_label_idx (idx_device, idx_agent) {
+  /**
+   * @param idx_device
+   * @param idx_agent
+   *  
+   * @returns None
+   */
+
+  data_dict = [];
+
+  var data = _get_datapoints (idx_device, idx_agent);
+
+  if (string.length (data) > 0) {
+    for (var instance of data) {
+      var agent_label = instance['agent_label'];
+      var idx_datapoint = instance['idx_datapoint'];
+      var timefixed_value = instance['timefixed_value'];
+
+      data_dict[agent_label] = (idx_datapoint, timefixed_value);
+    }
+  } else {
+    var log_message = 'Agent idx %s not found.' % idx_agent;
+    log.log2die (1050, log_message);
+  }
+  return data_dict;
 }
 
 function _d3_converter (values, chart_values, agent_label) {
