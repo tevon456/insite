@@ -27,11 +27,11 @@ class NavBar extends Component {
           </li>
           <li>
             <Link to="/">
-              <img src="./img/garnet_logo.png" style={{ height: "35px" }} />
+              <img src="./img/garnet_logo.png" style={{height: '35px'}} />
             </Link>
           </li>
           <li>
-            <Link to="/hosts"><b>Agents</b></Link>
+            <Link to="/Agent"><b>Agents</b></Link>
           </li>
           <li>
             <Link to="/settings"><b>Settings</b></Link>

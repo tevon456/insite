@@ -2,37 +2,38 @@ const _ = require ('lodash');
 
 function _datapoint_labels (idx_device, idx_agent, labels) {
   /**
-   * @param idx_device
-   * @param idx_agent
-   * @param labels
-   * 
-   * @returns listings
-   */
+ * et datapoint IDXes for a device / agent with specific labels.
+    Args:
+        idx_device: Device index
+        idx_agent: Agent index
+        labels: Labels to match
+        
+    Returns:
+        listing: List of datapoints
+ */
 
+  // Initialize key variables
   var listing = [];
+  var datapoints = [];
 
-  var datapoints = _get_datapoints (idx_agent, idx_device);
+  //Get datapoints the agent is tracking for the device
+  datapoints = _get_datapoints (idx_agent, idx_device);
 
-  for (var data_dict of datapoints) {
-    var agent_label = data_dict['agent_label'];
-    var idx_datapoint = data_dict['idx_datapoint'];
+  for (var data_dict = 0; data_dict < datapoints; data_dict++) {
+    if (datapoints[i].match (data_dict)) {
+      var agent_label = data_dict['agent_label'];
+      var idx_datapoint = data_dict['idx_datapoint'];
 
-    if (agent_label) of (labels);
-    {
-      listing.append (idx_datapoint);
+      if (agent_label) of (labels);
+      {
+        listing.append (idx_datapoint);
+      }
     }
   }
   return listing;
 }
 
 function _get_dp_label_idx (idx_device, idx_agent) {
-  /**
-   * @param idx_device
-   * @param idx_agent
-   *  
-   * @returns None
-   */
-
   data_dict = [];
 
   var data = _get_datapoints (idx_device, idx_agent);
