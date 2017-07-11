@@ -31,7 +31,11 @@ class NavBar extends Component {
             </Link>
           </li>
           <li>
+<<<<<<< HEAD
             <Link to="/Agent"><b>Agents</b></Link>
+=======
+            <Link to="/agents"><b>Agents</b></Link>
+>>>>>>> Added Agent component and it's route.
           </li>
           <li>
             <Link to="/settings"><b>Settings</b></Link>

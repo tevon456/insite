@@ -7,6 +7,7 @@
 import React, {Component} from 'react';
 import Dashboard from './Dashboard/Dashboard.js';
 import Settings from './Settings/Settings.js';
+import Agents from './Agents/Agents.js';
 
 import {Router, Route, hashHistory} from 'react-router';
 
@@ -24,6 +25,7 @@ class App extends Component {
       <Router history={hashHistory}>
         <Route path="/" component={Dashboard} />
         <Route path="/settings" component={Settings} />
+        <Route path="/agents" component={Agents} />
       </Router>
     );
   }

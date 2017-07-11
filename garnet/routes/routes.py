@@ -229,6 +229,20 @@ def settings():
     return jsonify(initial_dict)
 
 
+    @APP.route('/agents')
+def agents():
+    """Function for handling fetching agents that are collecting data.
+
+    Args:
+        None
+
+    Returns:
+        Agents that are collecting data
+
+    """
+    return jsonify(initial_dict)
+
+
 @APP.route('/graphs/did/<idx_datapoint>', methods=["GET", "POST"])
 def graphs(idx_datapoint):
     """Create graphs.

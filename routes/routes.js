@@ -1,9 +1,9 @@
-const express = require("express");
-const router = express.Router();
+const express = require ('express');
+const router = express.Router ();
 
 //Routes
-const initial = require("./get/initial.js");
+const initial = require ('./get/initial.js');
 
-router.get("/initial", initial);
+router.get ('/initial', initial);
 
 module.exports = router;
