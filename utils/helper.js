@@ -14,18 +14,16 @@ function _datapoint_labels (idx_device, idx_agent, labels) {
 
   // Initialize key variables
   var listing = [];
-  var datapoints = [];
 
   //Get datapoints the agent is tracking for the device
-  datapoints = _get_datapoints (idx_agent, idx_device);
+  var datapoints = _get_datapoints (idx_agent, idx_device);
 
-  for (var data_dict = 0; data_dict < datapoints; data_dict++) {
-    if (datapoints[i].match (data_dict)) {
-      var agent_label = data_dict['agent_label'];
-      var idx_datapoint = data_dict['idx_datapoint'];
+  for (var data_dict = 0; data_dict < datapoints.length; data_dict++) {
+    var agent_label = data_dict['agent_label'];
+    var idx_datapoint = data_dict['idx_datapoint'];
 
-      if (agent_label) of (labels);
-      {
+    for (var i = 0; i < labels.length; i++) {
+      if (agent_label == lables[i]) {
         listing.append (idx_datapoint);
       }
     }
