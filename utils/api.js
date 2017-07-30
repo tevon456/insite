@@ -2,6 +2,8 @@
 const axios = require("axios");
 const trim = require("strman").trim;
 
+const Rx = require("rxjs");
+
 // Garnet Config Object
 const CONFIG = require("./configuration.js");
 
@@ -30,19 +32,8 @@ function formatUrl(uri) {
   return result;
 }
 
-exports.get = function(uri) {
-  var url = formatUrl(uri);
-  var result;
-  axios
-    .get(url)
-    .then(data => {
-      result = data;
-    })
-    .catch(err => {
-      console.error("\nCannot contact Infoset API, charts will be blank!");
-      result = {};
-    });
-  return result;
+module.exports.get = function get(uri) {
+  return axios.get(formatUrl(uri));
 };
 
 exports.post = function(uri, data) {
