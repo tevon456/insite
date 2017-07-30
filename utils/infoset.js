@@ -1,28 +1,51 @@
+"use strict";
 const API = require("./api.js");
 
-let idx_agent = 1;
-let idx_device = 1;
-var device_agents_indices = API.get("deviceagents");
-var agents;
+class Infoset {
+  constructor() {}
 
-if (device_agents_indices) agents = API.get("agents");
+  async getIdxAgent() {
+    let agents;
+    let idx_agent;
+    try {
+      agents = await API.get("agents");
+    } catch (error) {
+      console.log(error);
+    }
 
-let devicename;
-//agents.forEach(function(element) {}, this);
-//device_agents_indices.forEach(function(element) {}, this);
+    for (var agent of agents.data) {
+      if (agent.agent === "collectr") {
+        idx_agent = agent.idx_agent;
+      }
+    }
+    return idx_agent;
+  }
 
-exports.idx_device = function() {
-  return idx_device;
-};
+  async getIdxDevice() {
+    let idx_device;
+    let device_agents_indices;
+    let idx_agent;
 
-exports.idx_agent = function() {
-  return idx_agent;
-};
+    try {
+      device_agents_indices = await API.get("deviceagents");
+      idx_agent = await this.getIdxAgent();
+    } catch (error) {
+      console.log(error);
+    }
 
-exports.devicename = function() {
-  var device_data;
-  var device;
-  device_data = API.get("devices/" + idx_device);
-  device = device_data.data;
-  return device;
-};
+    for (var device_agent of device_agents_indices.data) {
+      if (device_agent.idx_agent === idx_agent) {
+        idx_device = device_agent.idx_device;
+      }
+    }
+    return idx_device;
+  }
+
+  async devicename() {
+    let device_data;
+    device_data = await API.get("devices/" + idx_device());
+    return device_data.data;
+  }
+}
+
+module.exports = Infoset;
