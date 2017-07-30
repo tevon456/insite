@@ -1,10 +1,7 @@
 //Node Modules import
 const http = require("http");
 const express = require("express");
-const httpProxy = require("http-proxy");
-const proxy = httpProxy.createProxyServer({});
-const path = require("path");
-const _ = require("lodash");
+const join = require("path").join;
 const app = express();
 
 //Garnet imports
@@ -37,7 +34,7 @@ app.use(require("morgan")("short"));
     })
   );
 
-  app.use(express.static(path.join(__dirname, "/")));
+  app.use(express.static(join(__dirname, "/")));
 })();
 
 app.get("/", (req, res) => {
