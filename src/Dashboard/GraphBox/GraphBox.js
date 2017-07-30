@@ -12,7 +12,6 @@ import { Col, Panel } from "react-bootstrap";
 
 //Import sub components
 import DetailsBox from "../DetailsBox/DetailsBox";
-import BasicAreaChart from "./BasicAreaChart/BasicAreaChart";
 import CpuStackChart from "./StackedAreaChart/CpuStackChart";
 import LoadStackChart from "./StackedAreaChart/LoadStackChart";
 import MemoryStackChart from "./StackedAreaChart/MemoryStackChart";

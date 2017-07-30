@@ -1,18 +1,10 @@
-/**
- * Component: CpuStackChart
- * Purpose: Displays CpuStackChart of stacked data
- * Properties:
- *  url : local url prefix
- *  agentId : Agent Id in database
- *  stackType: Graph's stack type
- **/
-
 //React and React Bootstrap imports
 import React, { Component } from "react";
 //HTTP Promise library import
-import axios from "axios";
+import { get } from "axios";
 //D3.js import
-import * as d3 from "d3";
+import { scaleTime } from "d3-scale";
+import { timeHour } from "d3-time";
 //Moment.js import
 import moment from "moment";
 
@@ -25,9 +17,9 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
-import { ResponsiveContainer } from "recharts";
 
 class CpuStackChart extends Component {
   constructor(props) {
@@ -42,8 +34,7 @@ class CpuStackChart extends Component {
   componentDidMount() {
     var _this = this;
 
-    axios
-      .get(this.props.url + this.props.agentId + "/" + this.props.stackType)
+    get(this.props.url + this.props.agentId + "/" + this.props.stackType)
       .then(function(response) {
         var data = response.data;
         //Times each time by 100 to prep for conversion
@@ -69,8 +60,8 @@ class CpuStackChart extends Component {
       new Date(data[0].timestamp),
       new Date(data[data.length - 1].timestamp)
     ];
-    const scale = d3.scaleTime().domain(domain);
-    const ticks = scale.ticks(d3.timeHour, 1);
+    const scale = scaleTime().domain(domain);
+    const ticks = scale.ticks(timeHour, 1);
     return ticks.map(entry => +entry);
   }
 
