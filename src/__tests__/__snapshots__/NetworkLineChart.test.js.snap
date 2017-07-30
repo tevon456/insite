@@ -9,9 +9,8 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <ResponsiveContainer
-    aspect={2}
     debounce={0}
-    height="100%"
+    height="35%"
     width="100%"
 >
     <AnimationDecorator(ComposedDataDecorator(LineChart))
@@ -168,9 +167,8 @@ ShallowWrapper {
 </ResponsiveContainer>,
   "nodes": Array [
     <ResponsiveContainer
-      aspect={2}
       debounce={0}
-      height="100%"
+      height="35%"
       width="100%"
 >
       <AnimationDecorator(ComposedDataDecorator(LineChart))
@@ -335,7 +333,7 @@ ShallowWrapper {
       "_currentElement": <NetworkLineChart
         agentId="2"
         stackType="network"
-        url="/fetch/agent/graph/stacked/"
+        url="/charts/stacked/"
 />,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -346,7 +344,7 @@ ShallowWrapper {
         "props": Object {
           "agentId": "2",
           "stackType": "network",
-          "url": "/fetch/agent/graph/stacked/",
+          "url": "/charts/stacked/",
         },
         "refs": Object {},
         "state": Object {
@@ -371,9 +369,8 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <ResponsiveContainer
-          aspect={2}
           debounce={0}
-          height="100%"
+          height="35%"
           width="100%"
 >
           <AnimationDecorator(ComposedDataDecorator(LineChart))
@@ -530,9 +527,8 @@ ShallowWrapper {
 </ResponsiveContainer>,
         "_debugID": 2,
         "_renderedOutput": <ResponsiveContainer
-          aspect={2}
           debounce={0}
-          height="100%"
+          height="35%"
           width="100%"
 >
           <AnimationDecorator(ComposedDataDecorator(LineChart))
@@ -701,7 +697,7 @@ ShallowWrapper {
   "unrendered": <NetworkLineChart
     agentId="2"
     stackType="network"
-    url="/fetch/agent/graph/stacked/"
+    url="/charts/stacked/"
 />,
 }
 `;

@@ -9,14 +9,13 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <ResponsiveContainer
-    aspect={2}
     debounce={0}
-    height="100%"
+    height="35%"
     width="100%"
 >
     <AnimationDecorator(ComposedDataDecorator(AreaChart))
         data={Array []}
-        height={300}
+        height={150}
         layout="horizontal"
         margin={
             Object {
@@ -131,31 +130,9 @@ ShallowWrapper {
             animationEasing="ease"
             connectNulls={false}
             curve={true}
-            dataKey="memory_buffers"
-            dot={false}
-            fill="#71d5c3"
-            fillOpacity={0.6}
-            isAnimationActive={true}
-            label={false}
-            legendType="line"
-            onAnimationEnd={[Function]}
-            onAnimationStart={[Function]}
-            points={Array []}
-            stroke="#71d5c3"
-            type="monotone"
-            xAxisId={0}
-            yAxisId={0}
-        />
-        <Area
-            activeDot={true}
-            animationBegin={0}
-            animationDuration={1500}
-            animationEasing="ease"
-            connectNulls={false}
-            curve={true}
             dataKey="memory_cached"
             dot={false}
-            fill="#009db2"
+            fill="#003552"
             fillOpacity={0.6}
             isAnimationActive={true}
             label={false}
@@ -163,30 +140,8 @@ ShallowWrapper {
             onAnimationEnd={[Function]}
             onAnimationStart={[Function]}
             points={Array []}
-            stroke="#009db2"
-            type="monotone"
-            xAxisId={0}
-            yAxisId={0}
-        />
-        <Area
-            activeDot={true}
-            animationBegin={0}
-            animationDuration={1500}
-            animationEasing="ease"
-            connectNulls={false}
-            curve={true}
-            dataKey="memory_shared"
-            dot={false}
-            fill="#009db2"
-            fillOpacity={0.6}
-            isAnimationActive={true}
-            label={false}
-            legendType="line"
-            onAnimationEnd={[Function]}
-            onAnimationStart={[Function]}
-            points={Array []}
-            stroke="#009db2"
-            type="monotone"
+            stroke="#003552"
+            type="basisOpen"
             xAxisId={0}
             yAxisId={0}
         />
@@ -199,7 +154,7 @@ ShallowWrapper {
             curve={true}
             dataKey="memory_available"
             dot={false}
-            fill="#98e1d4"
+            fill="#003552"
             fillOpacity={0.6}
             isAnimationActive={true}
             label={false}
@@ -207,8 +162,8 @@ ShallowWrapper {
             onAnimationEnd={[Function]}
             onAnimationStart={[Function]}
             points={Array []}
-            stroke="#98e1d4"
-            type="monotone"
+            stroke="#003552"
+            type="basisOpen"
             xAxisId={0}
             yAxisId={0}
         />
@@ -221,7 +176,7 @@ ShallowWrapper {
             curve={true}
             dataKey="memory_free"
             dot={false}
-            fill="#f0e0a0"
+            fill="#60fc94"
             fillOpacity={0.6}
             isAnimationActive={true}
             label={false}
@@ -229,8 +184,52 @@ ShallowWrapper {
             onAnimationEnd={[Function]}
             onAnimationStart={[Function]}
             points={Array []}
-            stroke="#f0e0a0"
-            type="monotone"
+            stroke="#60fc94"
+            type="basisOpen"
+            xAxisId={0}
+            yAxisId={0}
+        />
+        <Area
+            activeDot={true}
+            animationBegin={0}
+            animationDuration={1500}
+            animationEasing="ease"
+            connectNulls={false}
+            curve={true}
+            dataKey="memory_shared"
+            dot={false}
+            fill="#1dd18c"
+            fillOpacity={0.6}
+            isAnimationActive={true}
+            label={false}
+            legendType="line"
+            onAnimationEnd={[Function]}
+            onAnimationStart={[Function]}
+            points={Array []}
+            stroke="#1dd18c"
+            type="basisOpen"
+            xAxisId={0}
+            yAxisId={0}
+        />
+        <Area
+            activeDot={true}
+            animationBegin={0}
+            animationDuration={1500}
+            animationEasing="ease"
+            connectNulls={false}
+            curve={true}
+            dataKey="memory_buffers"
+            dot={false}
+            fill="#008c7e"
+            fillOpacity={0.6}
+            isAnimationActive={true}
+            label={false}
+            legendType="line"
+            onAnimationEnd={[Function]}
+            onAnimationStart={[Function]}
+            points={Array []}
+            stroke="#008c7e"
+            type="basisOpen"
             xAxisId={0}
             yAxisId={0}
         />
@@ -238,14 +237,13 @@ ShallowWrapper {
 </ResponsiveContainer>,
   "nodes": Array [
     <ResponsiveContainer
-      aspect={2}
       debounce={0}
-      height="100%"
+      height="35%"
       width="100%"
 >
       <AnimationDecorator(ComposedDataDecorator(AreaChart))
             data={Array []}
-            height={300}
+            height={150}
             layout="horizontal"
             margin={
                   Object {
@@ -360,31 +358,9 @@ ShallowWrapper {
                   animationEasing="ease"
                   connectNulls={false}
                   curve={true}
-                  dataKey="memory_buffers"
-                  dot={false}
-                  fill="#71d5c3"
-                  fillOpacity={0.6}
-                  isAnimationActive={true}
-                  label={false}
-                  legendType="line"
-                  onAnimationEnd={[Function]}
-                  onAnimationStart={[Function]}
-                  points={Array []}
-                  stroke="#71d5c3"
-                  type="monotone"
-                  xAxisId={0}
-                  yAxisId={0}
-            />
-            <Area
-                  activeDot={true}
-                  animationBegin={0}
-                  animationDuration={1500}
-                  animationEasing="ease"
-                  connectNulls={false}
-                  curve={true}
                   dataKey="memory_cached"
                   dot={false}
-                  fill="#009db2"
+                  fill="#003552"
                   fillOpacity={0.6}
                   isAnimationActive={true}
                   label={false}
@@ -392,30 +368,8 @@ ShallowWrapper {
                   onAnimationEnd={[Function]}
                   onAnimationStart={[Function]}
                   points={Array []}
-                  stroke="#009db2"
-                  type="monotone"
-                  xAxisId={0}
-                  yAxisId={0}
-            />
-            <Area
-                  activeDot={true}
-                  animationBegin={0}
-                  animationDuration={1500}
-                  animationEasing="ease"
-                  connectNulls={false}
-                  curve={true}
-                  dataKey="memory_shared"
-                  dot={false}
-                  fill="#009db2"
-                  fillOpacity={0.6}
-                  isAnimationActive={true}
-                  label={false}
-                  legendType="line"
-                  onAnimationEnd={[Function]}
-                  onAnimationStart={[Function]}
-                  points={Array []}
-                  stroke="#009db2"
-                  type="monotone"
+                  stroke="#003552"
+                  type="basisOpen"
                   xAxisId={0}
                   yAxisId={0}
             />
@@ -428,7 +382,7 @@ ShallowWrapper {
                   curve={true}
                   dataKey="memory_available"
                   dot={false}
-                  fill="#98e1d4"
+                  fill="#003552"
                   fillOpacity={0.6}
                   isAnimationActive={true}
                   label={false}
@@ -436,8 +390,8 @@ ShallowWrapper {
                   onAnimationEnd={[Function]}
                   onAnimationStart={[Function]}
                   points={Array []}
-                  stroke="#98e1d4"
-                  type="monotone"
+                  stroke="#003552"
+                  type="basisOpen"
                   xAxisId={0}
                   yAxisId={0}
             />
@@ -450,7 +404,7 @@ ShallowWrapper {
                   curve={true}
                   dataKey="memory_free"
                   dot={false}
-                  fill="#f0e0a0"
+                  fill="#60fc94"
                   fillOpacity={0.6}
                   isAnimationActive={true}
                   label={false}
@@ -458,8 +412,52 @@ ShallowWrapper {
                   onAnimationEnd={[Function]}
                   onAnimationStart={[Function]}
                   points={Array []}
-                  stroke="#f0e0a0"
-                  type="monotone"
+                  stroke="#60fc94"
+                  type="basisOpen"
+                  xAxisId={0}
+                  yAxisId={0}
+            />
+            <Area
+                  activeDot={true}
+                  animationBegin={0}
+                  animationDuration={1500}
+                  animationEasing="ease"
+                  connectNulls={false}
+                  curve={true}
+                  dataKey="memory_shared"
+                  dot={false}
+                  fill="#1dd18c"
+                  fillOpacity={0.6}
+                  isAnimationActive={true}
+                  label={false}
+                  legendType="line"
+                  onAnimationEnd={[Function]}
+                  onAnimationStart={[Function]}
+                  points={Array []}
+                  stroke="#1dd18c"
+                  type="basisOpen"
+                  xAxisId={0}
+                  yAxisId={0}
+            />
+            <Area
+                  activeDot={true}
+                  animationBegin={0}
+                  animationDuration={1500}
+                  animationEasing="ease"
+                  connectNulls={false}
+                  curve={true}
+                  dataKey="memory_buffers"
+                  dot={false}
+                  fill="#008c7e"
+                  fillOpacity={0.6}
+                  isAnimationActive={true}
+                  label={false}
+                  legendType="line"
+                  onAnimationEnd={[Function]}
+                  onAnimationStart={[Function]}
+                  points={Array []}
+                  stroke="#008c7e"
+                  type="basisOpen"
                   xAxisId={0}
                   yAxisId={0}
             />
@@ -475,7 +473,7 @@ ShallowWrapper {
       "_currentElement": <MemoryStackChart
         agentId="2"
         stackType="memory"
-        url="/fetch/agent/graph/stacked/"
+        url="/charts/stacked/"
 />,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -486,7 +484,7 @@ ShallowWrapper {
         "props": Object {
           "agentId": "2",
           "stackType": "memory",
-          "url": "/fetch/agent/graph/stacked/",
+          "url": "/charts/stacked/",
         },
         "refs": Object {},
         "state": Object {
@@ -511,14 +509,13 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <ResponsiveContainer
-          aspect={2}
           debounce={0}
-          height="100%"
+          height="35%"
           width="100%"
 >
           <AnimationDecorator(ComposedDataDecorator(AreaChart))
                     data={Array []}
-                    height={300}
+                    height={150}
                     layout="horizontal"
                     margin={
                               Object {
@@ -633,31 +630,9 @@ ShallowWrapper {
                               animationEasing="ease"
                               connectNulls={false}
                               curve={true}
-                              dataKey="memory_buffers"
-                              dot={false}
-                              fill="#71d5c3"
-                              fillOpacity={0.6}
-                              isAnimationActive={true}
-                              label={false}
-                              legendType="line"
-                              onAnimationEnd={[Function]}
-                              onAnimationStart={[Function]}
-                              points={Array []}
-                              stroke="#71d5c3"
-                              type="monotone"
-                              xAxisId={0}
-                              yAxisId={0}
-                    />
-                    <Area
-                              activeDot={true}
-                              animationBegin={0}
-                              animationDuration={1500}
-                              animationEasing="ease"
-                              connectNulls={false}
-                              curve={true}
                               dataKey="memory_cached"
                               dot={false}
-                              fill="#009db2"
+                              fill="#003552"
                               fillOpacity={0.6}
                               isAnimationActive={true}
                               label={false}
@@ -665,30 +640,8 @@ ShallowWrapper {
                               onAnimationEnd={[Function]}
                               onAnimationStart={[Function]}
                               points={Array []}
-                              stroke="#009db2"
-                              type="monotone"
-                              xAxisId={0}
-                              yAxisId={0}
-                    />
-                    <Area
-                              activeDot={true}
-                              animationBegin={0}
-                              animationDuration={1500}
-                              animationEasing="ease"
-                              connectNulls={false}
-                              curve={true}
-                              dataKey="memory_shared"
-                              dot={false}
-                              fill="#009db2"
-                              fillOpacity={0.6}
-                              isAnimationActive={true}
-                              label={false}
-                              legendType="line"
-                              onAnimationEnd={[Function]}
-                              onAnimationStart={[Function]}
-                              points={Array []}
-                              stroke="#009db2"
-                              type="monotone"
+                              stroke="#003552"
+                              type="basisOpen"
                               xAxisId={0}
                               yAxisId={0}
                     />
@@ -701,7 +654,7 @@ ShallowWrapper {
                               curve={true}
                               dataKey="memory_available"
                               dot={false}
-                              fill="#98e1d4"
+                              fill="#003552"
                               fillOpacity={0.6}
                               isAnimationActive={true}
                               label={false}
@@ -709,8 +662,8 @@ ShallowWrapper {
                               onAnimationEnd={[Function]}
                               onAnimationStart={[Function]}
                               points={Array []}
-                              stroke="#98e1d4"
-                              type="monotone"
+                              stroke="#003552"
+                              type="basisOpen"
                               xAxisId={0}
                               yAxisId={0}
                     />
@@ -723,7 +676,7 @@ ShallowWrapper {
                               curve={true}
                               dataKey="memory_free"
                               dot={false}
-                              fill="#f0e0a0"
+                              fill="#60fc94"
                               fillOpacity={0.6}
                               isAnimationActive={true}
                               label={false}
@@ -731,8 +684,52 @@ ShallowWrapper {
                               onAnimationEnd={[Function]}
                               onAnimationStart={[Function]}
                               points={Array []}
-                              stroke="#f0e0a0"
-                              type="monotone"
+                              stroke="#60fc94"
+                              type="basisOpen"
+                              xAxisId={0}
+                              yAxisId={0}
+                    />
+                    <Area
+                              activeDot={true}
+                              animationBegin={0}
+                              animationDuration={1500}
+                              animationEasing="ease"
+                              connectNulls={false}
+                              curve={true}
+                              dataKey="memory_shared"
+                              dot={false}
+                              fill="#1dd18c"
+                              fillOpacity={0.6}
+                              isAnimationActive={true}
+                              label={false}
+                              legendType="line"
+                              onAnimationEnd={[Function]}
+                              onAnimationStart={[Function]}
+                              points={Array []}
+                              stroke="#1dd18c"
+                              type="basisOpen"
+                              xAxisId={0}
+                              yAxisId={0}
+                    />
+                    <Area
+                              activeDot={true}
+                              animationBegin={0}
+                              animationDuration={1500}
+                              animationEasing="ease"
+                              connectNulls={false}
+                              curve={true}
+                              dataKey="memory_buffers"
+                              dot={false}
+                              fill="#008c7e"
+                              fillOpacity={0.6}
+                              isAnimationActive={true}
+                              label={false}
+                              legendType="line"
+                              onAnimationEnd={[Function]}
+                              onAnimationStart={[Function]}
+                              points={Array []}
+                              stroke="#008c7e"
+                              type="basisOpen"
                               xAxisId={0}
                               yAxisId={0}
                     />
@@ -740,14 +737,13 @@ ShallowWrapper {
 </ResponsiveContainer>,
         "_debugID": 2,
         "_renderedOutput": <ResponsiveContainer
-          aspect={2}
           debounce={0}
-          height="100%"
+          height="35%"
           width="100%"
 >
           <AnimationDecorator(ComposedDataDecorator(AreaChart))
                     data={Array []}
-                    height={300}
+                    height={150}
                     layout="horizontal"
                     margin={
                               Object {
@@ -862,31 +858,9 @@ ShallowWrapper {
                               animationEasing="ease"
                               connectNulls={false}
                               curve={true}
-                              dataKey="memory_buffers"
-                              dot={false}
-                              fill="#71d5c3"
-                              fillOpacity={0.6}
-                              isAnimationActive={true}
-                              label={false}
-                              legendType="line"
-                              onAnimationEnd={[Function]}
-                              onAnimationStart={[Function]}
-                              points={Array []}
-                              stroke="#71d5c3"
-                              type="monotone"
-                              xAxisId={0}
-                              yAxisId={0}
-                    />
-                    <Area
-                              activeDot={true}
-                              animationBegin={0}
-                              animationDuration={1500}
-                              animationEasing="ease"
-                              connectNulls={false}
-                              curve={true}
                               dataKey="memory_cached"
                               dot={false}
-                              fill="#009db2"
+                              fill="#003552"
                               fillOpacity={0.6}
                               isAnimationActive={true}
                               label={false}
@@ -894,30 +868,8 @@ ShallowWrapper {
                               onAnimationEnd={[Function]}
                               onAnimationStart={[Function]}
                               points={Array []}
-                              stroke="#009db2"
-                              type="monotone"
-                              xAxisId={0}
-                              yAxisId={0}
-                    />
-                    <Area
-                              activeDot={true}
-                              animationBegin={0}
-                              animationDuration={1500}
-                              animationEasing="ease"
-                              connectNulls={false}
-                              curve={true}
-                              dataKey="memory_shared"
-                              dot={false}
-                              fill="#009db2"
-                              fillOpacity={0.6}
-                              isAnimationActive={true}
-                              label={false}
-                              legendType="line"
-                              onAnimationEnd={[Function]}
-                              onAnimationStart={[Function]}
-                              points={Array []}
-                              stroke="#009db2"
-                              type="monotone"
+                              stroke="#003552"
+                              type="basisOpen"
                               xAxisId={0}
                               yAxisId={0}
                     />
@@ -930,7 +882,7 @@ ShallowWrapper {
                               curve={true}
                               dataKey="memory_available"
                               dot={false}
-                              fill="#98e1d4"
+                              fill="#003552"
                               fillOpacity={0.6}
                               isAnimationActive={true}
                               label={false}
@@ -938,8 +890,8 @@ ShallowWrapper {
                               onAnimationEnd={[Function]}
                               onAnimationStart={[Function]}
                               points={Array []}
-                              stroke="#98e1d4"
-                              type="monotone"
+                              stroke="#003552"
+                              type="basisOpen"
                               xAxisId={0}
                               yAxisId={0}
                     />
@@ -952,7 +904,7 @@ ShallowWrapper {
                               curve={true}
                               dataKey="memory_free"
                               dot={false}
-                              fill="#f0e0a0"
+                              fill="#60fc94"
                               fillOpacity={0.6}
                               isAnimationActive={true}
                               label={false}
@@ -960,8 +912,52 @@ ShallowWrapper {
                               onAnimationEnd={[Function]}
                               onAnimationStart={[Function]}
                               points={Array []}
-                              stroke="#f0e0a0"
-                              type="monotone"
+                              stroke="#60fc94"
+                              type="basisOpen"
+                              xAxisId={0}
+                              yAxisId={0}
+                    />
+                    <Area
+                              activeDot={true}
+                              animationBegin={0}
+                              animationDuration={1500}
+                              animationEasing="ease"
+                              connectNulls={false}
+                              curve={true}
+                              dataKey="memory_shared"
+                              dot={false}
+                              fill="#1dd18c"
+                              fillOpacity={0.6}
+                              isAnimationActive={true}
+                              label={false}
+                              legendType="line"
+                              onAnimationEnd={[Function]}
+                              onAnimationStart={[Function]}
+                              points={Array []}
+                              stroke="#1dd18c"
+                              type="basisOpen"
+                              xAxisId={0}
+                              yAxisId={0}
+                    />
+                    <Area
+                              activeDot={true}
+                              animationBegin={0}
+                              animationDuration={1500}
+                              animationEasing="ease"
+                              connectNulls={false}
+                              curve={true}
+                              dataKey="memory_buffers"
+                              dot={false}
+                              fill="#008c7e"
+                              fillOpacity={0.6}
+                              isAnimationActive={true}
+                              label={false}
+                              legendType="line"
+                              onAnimationEnd={[Function]}
+                              onAnimationStart={[Function]}
+                              points={Array []}
+                              stroke="#008c7e"
+                              type="basisOpen"
                               xAxisId={0}
                               yAxisId={0}
                     />
@@ -981,7 +977,7 @@ ShallowWrapper {
   "unrendered": <MemoryStackChart
     agentId="2"
     stackType="memory"
-    url="/fetch/agent/graph/stacked/"
+    url="/charts/stacked/"
 />,
 }
 `;
