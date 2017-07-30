@@ -21,7 +21,9 @@ exports.normalized_timestamp = function(timestamp) {
   let value;
 
   if (timestamp === undefined) {
-    value = Math.floor(new Date().getTime() / interval);
+    var time = new Date().getTime() / 1000;
+    var multiple = Math.floor(time / interval);
+    value = multiple * interval;
   } else {
     value = Math.floor(timestamp / interval);
   }
