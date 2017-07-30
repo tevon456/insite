@@ -1,11 +1,14 @@
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
 
   output: {
-    publicPath: "dist/"
+    path: __dirname + "dist/",
+    filename: "bundle.js",
+    chunkFilename: "[id].bundle.js"
   },
 
   module: {
@@ -37,6 +40,7 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebpackPlugin(),
     new ExtractTextPlugin({
       filename: "css/bundle.css",
       disable: false,
