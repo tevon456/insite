@@ -1,7 +1,7 @@
 {
-  "name": "infoset",
+  "name": "garnet",
   "version": "1.0.0",
-  "description": "",
+  "description": "React based Dashboard that uses infoset-ng as data store",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest -u",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pr0x1m4/infoset.git"
+    "url": "git+https://github.com/PalisadoesFoundation/garnet"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Pr0x1m4/infoset/issues"
+    "url": "https://github.com/PalisadoesFoundation/garnet/issues"
   },
   "jest": {
     "transform": {
@@ -39,7 +39,7 @@
       "jsx"
     ]
   },
-  "homepage": "https://github.com/Pr0x1m4/infoset#readme",
+  "homepage": "https://github.com/PalisadoesFoundation/garnet",
   "dependencies": {
     "axios": "^0.15.3",
     "bootstrap": "^3.3.7",
@@ -54,7 +54,9 @@
     "react-dom": "^15.5.4",
     "react-router": "^3.0.1",
     "recharts": "^0.20.2",
+    "rxjs": "^5.4.2",
     "strman": "^2.0.0",
+    "sync-request": "^4.1.0",
     "yamljs": "^0.2.10"
   },
   "devDependencies": {
