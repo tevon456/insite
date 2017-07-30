@@ -1,6 +1,6 @@
 {
   "name": "garnet",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "React based Dashboard that uses infoset-ng as data store",
   "main": "index.js",
   "scripts": {
