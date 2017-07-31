@@ -11,9 +11,8 @@ const config = require("./utils/configuration.js");
 const general = require("./utils/general.js");
 const router = require("./routes/routes.js");
 
-app.use(require("morgan")("short"));
-
-(function initWebpack() {
+// Development
+if ((process.env.NODE_ENV = "development")) {
   const webpack = require("webpack");
   const webpackConfig = require("./webpack/common.config");
 
@@ -22,20 +21,26 @@ app.use(require("morgan")("short"));
   app.use(
     require("webpack-dev-middleware")(compiler, {
       noInfo: true,
+      stats: {
+        colors: true
+      },
       publicPath: webpackConfig.output.publicPath
     })
   );
 
   app.use(
     require("webpack-hot-middleware")(compiler, {
+      publicPath: webpackConfig.output.publicPath,
       log: console.log,
       path: "/__webpack_hmr",
       heartbeat: 10 * 1000
     })
   );
+}
 
-  app.use(express.static(join(__dirname, "/")));
-})();
+app.use(require("morgan")("short"));
+
+app.use(express.static(join(__dirname, "/")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));

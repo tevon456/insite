@@ -16,10 +16,6 @@ import { Router, Route, hashHistory } from "react-router";
  * App entry point.
  * @return Main component
  */
-const AsyncDashboard = Loadable({
-  loader: () => import("./Dashboard/Dashboard.js"),
-  loading: Loading
-});
 
 class App extends Component {
   /**
