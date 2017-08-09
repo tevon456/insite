@@ -10,6 +10,7 @@ import React, { Component } from "react";
 import { Link } from "react-router";
 
 //Component's style
+import logo from "./garnet_logo.png";
 import "./Navbar.less";
 
 class NavBar extends Component {
@@ -29,7 +30,7 @@ class NavBar extends Component {
           </li>
           <li>
             <Link to="/">
-              <img src="./img/garnet_logo.png" style={{ height: "35px" }} />
+              <img src={logo} style={{ height: "35px" }} />
             </Link>
           </li>
           <li>
