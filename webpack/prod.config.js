@@ -6,9 +6,7 @@ module.exports = {
   devtool: "source-map",
 
   output: {
-    path: __dirname + "dist/",
-    filename: "bundle.js",
-    chunkFilename: "[id].bundle.js"
+    path: __dirname + "dist/"
   },
 
   module: {
@@ -40,7 +38,9 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Garnet"
+    }),
     new ExtractTextPlugin({
       filename: "css/bundle.css",
       disable: false,
