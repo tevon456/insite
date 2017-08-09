@@ -43,7 +43,7 @@ app.use(require("morgan")("short"));
 app.use(express.static(join(__dirname, "/dist")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(join(__dirname, "index.html"));
 });
 
 // Register Routes
