@@ -33,6 +33,7 @@ __pycache__/
 *.garnet
 
 # Ignore files in these directories and ALL subdirectories
+dist/**
 data/**
 log/**
 cache/**
