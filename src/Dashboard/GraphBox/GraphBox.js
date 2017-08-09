@@ -8,14 +8,31 @@
 
 //React and React Bootstrap imports
 import React, { Component } from "react";
+import Loadable from "react-loadable";
 import { Col, Panel } from "react-bootstrap";
 
 //Import sub components
 import DetailsBox from "../DetailsBox/DetailsBox";
-import CpuStackChart from "./StackedAreaChart/CpuStackChart";
-import LoadStackChart from "./StackedAreaChart/LoadStackChart";
-import MemoryStackChart from "./StackedAreaChart/MemoryStackChart";
-import NetworkLineChart from "./StackedAreaChart/NetworkLineChart";
+
+const AsyncCpuStackChart = Loadable({
+  loader: () => import("./CpuStackChart/CpuStackChart.js"),
+  loading: () => null
+});
+
+const AsyncLoadStackChart = Loadable({
+  loader: () => import("./LoadStackChart/LoadStackChart.js"),
+  loading: () => null
+});
+
+const AsyncMemoryStackChart = Loadable({
+  loader: () => import("./MemoryStackChart/MemoryStackChart.js"),
+  loading: () => null
+});
+
+const AsyncNetworkLineChart = Loadable({
+  loader: () => import("./NetworkLineChart/NetworkLineChart.js"),
+  loading: () => null
+});
 
 class GraphBox extends Component {
   constructor(props) {
@@ -35,19 +52,19 @@ class GraphBox extends Component {
           </Col>
           <Col xs={12} sm={12} md={12} lg={12}>
             <h4>Load Average</h4>
-            <LoadStackChart agentId={this.props.data.agent} />
+            <AsyncLoadStackChart agentId={this.props.data.agent} />
           </Col>
           <Col xs={12} sm={12} md={12} lg={12}>
             <h4>CPU Utilization</h4>
-            <CpuStackChart agentId={this.props.data.agent} />
+            <AsyncCpuStackChart agentId={this.props.data.agent} />
           </Col>
           <Col xs={12} sm={12} md={12} lg={12}>
             <h4>Memory Utilization</h4>
-            <MemoryStackChart agentId={this.props.data.agent} />
+            <AsyncMemoryStackChart agentId={this.props.data.agent} />
           </Col>
           <Col xs={12} sm={12} md={12} lg={12}>
             <h4>Network Average</h4>
-            <NetworkLineChart agentId={this.props.data.agent} />
+            <AsyncNetworkLineChart agentId={this.props.data.agent} />
           </Col>
         </Col>
       </div>
