@@ -11,8 +11,8 @@ const config = require("./utils/configuration.js");
 const general = require("./utils/general.js");
 const router = require("./routes/routes.js");
 
-// Development
-if ((process.env.NODE_ENV = "development")) {
+// If in Development compile with webpack
+if (process.env.NODE_ENV === "development") {
   const webpack = require("webpack");
   const webpackConfig = require("./webpack/common.config");
 
@@ -20,7 +20,7 @@ if ((process.env.NODE_ENV = "development")) {
 
   app.use(
     require("webpack-dev-middleware")(compiler, {
-      noInfo: true,
+      noInfo: false,
       stats: {
         colors: true
       },
@@ -40,10 +40,10 @@ if ((process.env.NODE_ENV = "development")) {
 
 app.use(require("morgan")("short"));
 
-app.use(express.static(join(__dirname, "/")));
+app.use(express.static(join(__dirname, "/dist")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // Register Routes
