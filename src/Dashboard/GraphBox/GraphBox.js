@@ -6,24 +6,40 @@
  *  data: Data object from Parent
  **/
 
- //React and React Bootstrap imports
-import React, { Component } from 'react';
-import { Col, Panel } from 'react-bootstrap';
+//React and React Bootstrap imports
+import React, { Component } from "react";
+import Loadable from "react-loadable";
+import { Col, Panel } from "react-bootstrap";
 
 //Import sub components
-import DetailsBox from '../DetailsBox/DetailsBox';
-import BasicAreaChart from './BasicAreaChart/BasicAreaChart';
-import CpuStackChart from './StackedAreaChart/CpuStackChart';
-import LoadStackChart from './StackedAreaChart/LoadStackChart';
-import MemoryStackChart from './StackedAreaChart/MemoryStackChart';
-import NetworkLineChart from './StackedAreaChart/NetworkLineChart';
+import DetailsBox from "../DetailsBox/DetailsBox";
 
-class GraphBox extends Component{
+const AsyncCpuStackChart = Loadable({
+  loader: () => import("./CpuStackChart/CpuStackChart.js"),
+  loading: () => null
+});
+
+const AsyncLoadStackChart = Loadable({
+  loader: () => import("./LoadStackChart/LoadStackChart.js"),
+  loading: () => null
+});
+
+const AsyncMemoryStackChart = Loadable({
+  loader: () => import("./MemoryStackChart/MemoryStackChart.js"),
+  loading: () => null
+});
+
+const AsyncNetworkLineChart = Loadable({
+  loader: () => import("./NetworkLineChart/NetworkLineChart.js"),
+  loading: () => null
+});
+
+class GraphBox extends Component {
   constructor(props) {
     super(props);
   }
 
-  render(){
+  render() {
     return (
       <div className="GraphBox">
         <Col xs={12} md={12}>
@@ -31,23 +47,28 @@ class GraphBox extends Component{
             <DetailsBox
               device={this.props.data.device}
               system={this.props.data.system}
-              version={this.props.data.release}></DetailsBox>
+              version={this.props.data.release}
+            />
           </Col>
-          <Col xs={12} sm={12} md={12} lg={6}>
-            <h4>CPU Utilization</h4>
-            <CpuStackChart agentId={this.props.data.agent} ></CpuStackChart>
+          <Col xs={12} sm={12} md={12} lg={12}>
             <h4>Load Average</h4>
-            <LoadStackChart agentId={this.props.data.agent} ></LoadStackChart>
+            <AsyncLoadStackChart agentId={this.props.data.agent} />
           </Col>
-          <Col xs={12} sm={12} md={12} lg={6}>
+          <Col xs={12} sm={12} md={12} lg={12}>
+            <h4>CPU Utilization</h4>
+            <AsyncCpuStackChart agentId={this.props.data.agent} />
+          </Col>
+          <Col xs={12} sm={12} md={12} lg={12}>
             <h4>Memory Utilization</h4>
-            <MemoryStackChart agentId={this.props.data.agent} ></MemoryStackChart>
+            <AsyncMemoryStackChart agentId={this.props.data.agent} />
+          </Col>
+          <Col xs={12} sm={12} md={12} lg={12}>
             <h4>Network Average</h4>
-            <NetworkLineChart agentId={this.props.data.agent} ></NetworkLineChart>
+            <AsyncNetworkLineChart agentId={this.props.data.agent} />
           </Col>
         </Col>
       </div>
-    )
+    );
   }
 }
 
@@ -55,7 +76,7 @@ class GraphBox extends Component{
 GraphBox.defaultProps = {
   agentId: "2",
   data: {}
-}
+};
 
 //Exports class to Global namespace
 export default GraphBox;

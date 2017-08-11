@@ -1,16 +1,18 @@
 const Infoset = require("../../utils/infoset.js");
 const API = require("../../utils/api.js");
 
-function initial(req, res, err) {
-  var idx_device = Infoset.idx_device();
-  var idx_agent = Infoset.idx_agent();
+const infoset = new Infoset();
+
+async function initial(req, res, err) {
+  var idx_device = await infoset.getIdxDevice();
+  var idx_agent = await infoset.getIdxAgent();
 
   var data;
-  data = API.get("agents/" + idx_agent);
+  data = await API.get("agents/" + idx_agent);
 
   res.send({
-    agent: "1",
-    idx_agent: "1"
+    agent: "2",
+    idx_agent: "2"
   });
 }
 
