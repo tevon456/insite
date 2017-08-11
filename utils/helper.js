@@ -18,7 +18,9 @@ function _datapoint_labels (idx_device, idx_agent, labels) {
   //Get datapoints the agent is tracking for the device
   var datapoints = _get_datapoints (idx_agent, idx_device);
 
-  for (var data_dict = 0; data_dict < datapoints.length; data_dict++) {
+  for (var i = 0; i < datapoints.length; i++) {
+    var data_dict = [];
+    data_dict[i++] = datapoints;
     var agent_label = data_dict['agent_label'];
     var idx_datapoint = data_dict['idx_datapoint'];
 
@@ -36,8 +38,8 @@ function _get_dp_label_idx (idx_device, idx_agent) {
 
   var data = _get_datapoints (idx_device, idx_agent);
 
-  if (string.length (data) > 0) {
-    for (var instance of data) {
+  if (data.length > 0) {
+    for (var instance = 0; instance < data.length; instance++) {
       var agent_label = instance['agent_label'];
       var idx_datapoint = instance['idx_datapoint'];
       var timefixed_value = instance['timefixed_value'];
