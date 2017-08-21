@@ -9,13 +9,29 @@
 
 //React and React Bootstrap imports
 import React, { Component } from "react";
-import { Table, Panel, Col } from "react-bootstrap";
+
+import styled from "styled-components";
+import { Flex, Grid, Box } from "grid-styled";
 
 //Axios import, HTTP Promise library
 import axios from "axios";
 
-//Component's style
-import "./DetailsBox.less";
+import idCard from "./id-card.svg";
+import monitor from "./monitor.svg";
+import settings from "./settings.svg";
+
+const Panel = styled("Flex")`
+  margin-top: 10px;
+  padding-top: 10px;
+  display: inline-flex;
+  min-width: 1024px;
+  text-align: center;
+  box-shadow: 3px 3px 5px 3px #ccc;
+`;
+
+const CenterBox = styled("Box")`
+text-align: center;
+`;
 
 class DetailsBox extends Component {
   constructor(props) {
@@ -23,25 +39,20 @@ class DetailsBox extends Component {
   }
 
   render() {
-    //Additional inline styles
-    var style = {
-      textAlign: "center"
-    };
-
     return (
-      <Panel className="DetailsBox" style={style}>
-        <Col sm={4} md={4}>
-          <img src="img/id-card.svg" />
+      <Panel align="center" p={10}>
+        <Box width={1}>
+          <img src={idCard} height="35px" />
           <p><b>Host</b> {this.props.device}</p>
-        </Col>
-        <Col sm={4} md={4}>
-          <img src="img/monitor.svg" />
+        </Box>
+        <Box width={1}>
+          <img src={monitor} height="35px" />
           <p><b>Operating System</b> {this.props.system}</p>
-        </Col>
-        <Col sm={4} md={4}>
-          <img src="img/settings.svg" />
+        </Box>
+        <Box width={1}>
+          <img src={settings} height="35px" />
           <p><b>Version</b> {this.props.version}</p>
-        </Col>
+        </Box>
       </Panel>
     );
   }

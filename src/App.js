@@ -5,10 +5,6 @@
  **/
 
 import React, { Component } from "react";
-import Dashboard from "./Dashboard/Dashboard.js";
-import Settings from "./Settings/Settings.js";
-import Loading from "./Loading/Loading.js";
-
 import Loadable from "react-loadable";
 import { Router, Route, hashHistory } from "react-router";
 
@@ -16,6 +12,20 @@ import { Router, Route, hashHistory } from "react-router";
  * App entry point.
  * @return Main component
  */
+const AsyncDashboard = Loadable({
+  loader: () => import("./Dashboard/Dashboard.js"),
+  loading: () => null
+});
+
+const AsyncSettings = Loadable({
+  loader: () => import("./Settings/Settings.js"),
+  loading: () => null
+});
+
+const AsyncDataPage = Loadable({
+  loader: () => import("./DataPage/DataPage.js"),
+  loading: () => null
+});
 
 class App extends Component {
   /**
@@ -25,8 +35,9 @@ class App extends Component {
   render() {
     return (
       <Router history={hashHistory}>
-        <Route path="/" component={Dashboard} />
-        <Route path="/settings" component={Settings} />
+        <Route path="/" component={AsyncDashboard} />
+        <Route path="/settings" component={AsyncSettings} />
+        <Route path="/data" component={AsyncDataPage} />
       </Router>
     );
   }

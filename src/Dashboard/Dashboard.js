@@ -10,12 +10,20 @@ import React, { Component } from "react";
 import { Col } from "react-bootstrap";
 //HTTP Promise library import
 import axios from "axios";
+import styled from "styled-components";
+import { Box } from "grid-styled";
 
 //Import sub components
 import NavBar from "../Navbar/Navbar.js";
 import DetailsBox from "./DetailsBox/DetailsBox.js";
 import GraphBox from "./GraphBox/GraphBox.js";
 import Footer from "./Footer/Footer";
+
+const Container = styled(Box)`
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 class Dashboard extends Component {
   constructor() {
@@ -46,9 +54,9 @@ class Dashboard extends Component {
     return (
       <div>
         <NavBar />
-        <div className="container" style={{ marginBottom: "75px" }}>
+        <Container>
           <GraphBox agentId={this.state.data.agent} data={this.state.data} />
-        </div>
+        </Container>
         <Footer />
       </div>
     );
