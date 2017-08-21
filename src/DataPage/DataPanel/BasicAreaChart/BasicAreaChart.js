@@ -11,7 +11,6 @@ import moment from "moment";
 import {
   AreaChart,
   Area,
-  Axis,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -29,19 +28,46 @@ class BasicAreaChart extends Component {
     };
   }
 
-  getTicks(data) {
+  getTicks = data => {
     if (!data || !data.length) {
       return [];
     }
-
-    const domain = [new Date(data[0].x), new Date(data[data.length - 1].x)];
-    const scale = scaleTime().domain(domain).range([0, 1]);
+    const domain = [
+      new Date(data[0].timestamp),
+      new Date(data[data.length - 1].timestamp)
+    ];
+    const scale = scaleTime().domain(domain);
     const ticks = scale.ticks(timeHour, 1);
     return ticks.map(entry => +entry);
-  }
+  };
 
-  dateFormat(time) {
+  dateFormat = time => {
     return moment(time).format("HH:mm");
+  };
+
+  componentWillReceiveProps(nextProps) {
+    var _this = this;
+    get(
+      nextProps.url +
+        nextProps.datapointId +
+        "?timeStart=" +
+        nextProps.timeStart +
+        "&timeStop=" +
+        nextProps.timeStop
+    )
+      .then(function(response) {
+        var data = response.data;
+        //Times each time by 100 to prep for conversion
+        data.forEach(function(d) {
+          d.timestamp = d.timestamp * 1000;
+        });
+        _this.setState({
+          data: response.data
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
   //Runs after Component is Loaded
   componentDidMount() {
@@ -50,40 +76,37 @@ class BasicAreaChart extends Component {
     get(
       this.props.url +
         this.props.datapointId +
-        "?ts_start=" +
-        timeStart.toString() +
-        "&ts_stop=" +
-        timeStop.toString()
+        "?timeStart=" +
+        this.props.timeStart +
+        "&timeStop=" +
+        this.props.timeStop
     )
       .then(function(response) {
         var data = response.data;
-
+        //Times each time by 100 to prep for conversion
         data.forEach(function(d) {
-          d.x = d.x * 1000;
+          d.timestamp = d.timestamp * 1000;
         });
-
         _this.setState({
-          data: response.data,
-          timeStart: timeStart,
-          timeStop: timeStop
+          data: response.data
         });
       })
       .catch(function(error) {
-        console.log("error");
+        console.log(error);
       });
   }
 
   render() {
     return (
-      <ResponsiveContainer width="100%" height="35%">
+      <ResponsiveContainer height="35%" minHeight={300}>
         <AreaChart
           width={600}
-          height={300}
+          height={150}
           data={this.state.data}
           margin={{ top: 10, right: 0, left: 0, bottom: 30 }}
         >
           <XAxis
-            dataKey="x"
+            dataKey="timestamp"
             ticks={this.getTicks(this.state.data)}
             tickFormatter={this.dateFormat}
           />
@@ -99,7 +122,8 @@ class BasicAreaChart extends Component {
 
 BasicAreaChart.defaultProps = {
   url: "/charts/area/",
-  datapointId: "130",
+  datapointId: "113",
+  datapointLabel: "Example",
   type: "current",
   timeStop: 0,
   timeStart: 0
