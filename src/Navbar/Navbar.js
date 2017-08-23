@@ -5,20 +5,20 @@
  **/
 
 //React and React Bootstrap imports
-import React, { Component } from "react";
+import React, {Component} from 'react';
 //React-Router imports for..Routing
-import { Link } from "react-router";
+import {Link} from 'react-router';
 
 //Component's style
-import logo from "./garnet_logo.png";
-import "./Navbar.less";
+import logo from './garnet_logo.png';
+import './Navbar.less';
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
   }
 
-  render() {
+  render () {
     return (
       <div className="NavBar">
         <ul>
@@ -30,11 +30,11 @@ class NavBar extends Component {
           </li>
           <li>
             <Link to="/">
-              <img src={logo} style={{ height: "35px" }} />
+              <img src={logo} style={{height: '35px'}} />
             </Link>
           </li>
           <li>
-            <Link to="/hosts"><b>Agents</b></Link>
+            <Link to="/agents"><b>Agents</b></Link>
           </li>
           <li>
             <Link to="/settings"><b>Settings</b></Link>
