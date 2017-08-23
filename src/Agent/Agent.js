@@ -20,7 +20,7 @@ import {
 import Navbar from '../Navbar/Navbar.js';
 import Footer from '../Dashboard/Footer/Footer.js';
 
-class Agents extends Component {
+class Settings extends Component {
   constructor () {
     super ();
     this.state = {
@@ -38,84 +38,52 @@ class Agents extends Component {
             <Row className="show-grid">
               <Well>
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 1</ControlLabel>
-=======
-                <ControlLabel>Agent 0</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>Log File</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.value}
                   placeholder="log/garnet.log"
                 />
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 2</ControlLabel>
-=======
-                <ControlLabel>Agent 1</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>Log Level</ControlLabel>
                 <FormControl componentClass="select" placeholder="select">
                   <option value="other">info</option>
                 </FormControl>
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 3</ControlLabel>
-=======
-                <ControlLabel>Agent 2</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>agent_cache_directory</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.value}
                   placeholder="cache"
                 />
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 4</ControlLabel>
-=======
-                <ControlLabel>Agent 3</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>language</ControlLabel>
                 <FormControl componentClass="select" placeholder="select">
                   <option value="other">en</option>
                 </FormControl>
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 5</ControlLabel>
-=======
-                <ControlLabel>Agent 4</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>interval</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.value}
                   placeholder="100"
                 />
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 6</ControlLabel>
-=======
-                <ControlLabel>Agent 5</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>agent_subprocesses</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.value}
                   placeholder="10"
                 />
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 7</ControlLabel>
-=======
-                <ControlLabel>Agent 6</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>listen_address</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.value}
                   placeholder="127.0.0.1"
                 />
 
-<<<<<<< HEAD
-                <ControlLabel>Agent 8</ControlLabel>
-=======
-                <ControlLabel>Agent 7</ControlLabel>
->>>>>>> f77a40f7f4d08718b0f788f94dd776d2c3d3935d
+                <ControlLabel>bind_port</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.value}
@@ -144,9 +112,9 @@ class Agents extends Component {
 }
 
 //Default properties
-Agents.defaultProps = {
+Settings.defaultProps = {
   data: [],
 };
 
 //Exports class to Global namespace
-export default Agents;
+export default Settings;
