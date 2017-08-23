@@ -9,7 +9,8 @@
 //React and React Bootstrap imports
 import React, { Component } from "react";
 import Loadable from "react-loadable";
-import { Col, Panel } from "react-bootstrap";
+import styled from "styled-components";
+import { Flex, Box, Grid } from "grid-styled";
 
 //Import sub components
 import DetailsBox from "../DetailsBox/DetailsBox";
@@ -41,32 +42,24 @@ class GraphBox extends Component {
 
   render() {
     return (
-      <div className="GraphBox">
-        <Col xs={12} md={12}>
-          <Col xs={12} md={12}>
-            <DetailsBox
-              device={this.props.data.device}
-              system={this.props.data.system}
-              version={this.props.data.release}
-            />
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <h4>Load Average</h4>
-            <AsyncLoadStackChart agentId={this.props.data.agent} />
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <h4>CPU Utilization</h4>
-            <AsyncCpuStackChart agentId={this.props.data.agent} />
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <h4>Memory Utilization</h4>
-            <AsyncMemoryStackChart agentId={this.props.data.agent} />
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <h4>Network Average</h4>
-            <AsyncNetworkLineChart agentId={this.props.data.agent} />
-          </Col>
-        </Col>
+      <div>
+        <DetailsBox
+          device={this.props.data.device}
+          system={this.props.data.system}
+          version={this.props.data.release}
+        />
+
+        <h4>Load Average</h4>
+        <AsyncLoadStackChart agentId={this.props.data.agent} />
+
+        <h4>CPU Utilization</h4>
+        <AsyncCpuStackChart agentId={this.props.data.agent} />
+
+        <h4>Memory Utilization</h4>
+        <AsyncMemoryStackChart agentId={this.props.data.agent} />
+
+        <h4>Network Average</h4>
+        <AsyncNetworkLineChart agentId={this.props.data.agent} />
       </div>
     );
   }
