@@ -5,16 +5,18 @@
  **/
 
 //React and React Bootstrap imports
-import React, { Component } from "react";
-import styled from "styled-components";
+
+import React, {Component} from 'react';
+import styled from 'styled-components';
+
 //React-Router imports for..Routing
-import { Link } from "react-router";
-import { Flex, Box, Grid } from "grid-styled";
+import {Link} from 'react-router';
+import {Flex, Box, Grid} from 'grid-styled';
 
 //Component's style
-import logo from "./garnet_logo.png";
+import logo from './garnet_logo.png';
 
-const StyledLink = styled(Link)`
+const StyledLink = styled (Link)`
   text-decoration: none;
   font-weight: 600;
   color: #bc3e3f;
@@ -27,15 +29,18 @@ const StyledLink = styled(Link)`
   }
 `;
 
+
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
   }
 
+
   render() {
+
     const navStyles = {
-      height: "50px",
-      borderBottom: "1px solid #bc3e3f"
+      height: '50px',
+      borderBottom: '1px solid #bc3e3f',
     };
     return (
       <Flex align="center" style={navStyles} pt={5}>
@@ -48,7 +53,7 @@ class NavBar extends Component {
           </Grid>
           <Grid pr={10} pl={10}>
             <StyledLink to="/">
-              <img src={logo} style={{ height: "35px" }} />
+              <img src={logo} style={{height: '35px'}} />
             </StyledLink>
           </Grid>
           <Grid p={5}>
@@ -59,6 +64,17 @@ class NavBar extends Component {
           </Grid>
         </Box>
       </Flex>
+              <img src="./img/garnet_logo.png" style={{height: '35px'}} />
+            </Link>
+          </li>
+          <li>
+            <Link to="/agents"><b>Agents</b></Link>
+          </li>
+          <li>
+            <Link to="/settings"><b>Settings</b></Link>
+          </li>
+        </ul>
+      </div>
     );
   }
 }
