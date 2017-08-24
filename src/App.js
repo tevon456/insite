@@ -5,6 +5,11 @@
  **/
 
 import React, {Component} from 'react';
+import Dashboard from './Dashboard/Dashboard.js';
+import Settings from './Settings/Settings.js';
+import Loading from './Loading/Loading.js';
+import Agents from './Agents/Agents.js';
+
 import Loadable from 'react-loadable';
 import {Router, Route, hashHistory} from 'react-router';
 
@@ -40,6 +45,7 @@ class App extends Component {
   render () {
     return (
       <Router history={hashHistory}>
+
         <Route path="/" component={AsyncDashboard} />
         <Route path="/agents" component={AsyncAgentPage} />
         <Route path="/settings" component={AsyncSettings} />

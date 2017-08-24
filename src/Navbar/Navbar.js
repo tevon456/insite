@@ -5,8 +5,10 @@
  **/
 
 //React and React Bootstrap imports
+
 import React, {Component} from 'react';
 import styled from 'styled-components';
+
 //React-Router imports for..Routing
 import {Link} from 'react-router';
 import {Flex, Box, Grid} from 'grid-styled';
@@ -27,12 +29,15 @@ const StyledLink = styled (Link)`
   }
 `;
 
+
 class NavBar extends Component {
   constructor (props) {
     super (props);
   }
 
-  render () {
+
+  render() {
+
     const navStyles = {
       height: '50px',
       borderBottom: '1px solid #bc3e3f',
@@ -59,6 +64,17 @@ class NavBar extends Component {
           </Grid>
         </Box>
       </Flex>
+              <img src="./img/garnet_logo.png" style={{height: '35px'}} />
+            </Link>
+          </li>
+          <li>
+            <Link to="/agents"><b>Agents</b></Link>
+          </li>
+          <li>
+            <Link to="/settings"><b>Settings</b></Link>
+          </li>
+        </ul>
+      </div>
     );
   }
 }
