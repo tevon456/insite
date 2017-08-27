@@ -8,10 +8,7 @@ const infoset = new Infoset();
 async function fetchDatapoints(req, res, err) {
   try {
     var idx_device = await infoset.getIdxDevice();
-    var datapoints = await API.get(
-      "/datapoints?idx_deviceagent=" + idx_device + "&base_type=64"
-    );
-    console.log(datapoints);
+    var datapoints = await API.get("/datapoints?idx_deviceagent=" + idx_device);
   } catch (error) {
     console.log(error);
   }
