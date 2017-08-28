@@ -14,7 +14,7 @@ import styled from "styled-components";
 import { Flex, Grid, Box } from "grid-styled";
 
 //Axios import, HTTP Promise library
-import axios from "axios";
+import { get } from "axios";
 
 import idCard from "./id-card.svg";
 import monitor from "./monitor.svg";
@@ -36,6 +36,28 @@ text-align: center;
 class DetailsBox extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      host: "",
+      system: "",
+      version: ""
+    };
+  }
+
+  componentDidMount() {
+    var _this = this;
+    get("initial")
+      .then(function(response) {
+        console.log(response.data);
+        _this.setState({
+          host: response.data[2],
+          system: response.data[1],
+          version: response.data[0]
+        });
+      })
+      .catch(function(error) {
+        console.log("Error from fetch");
+        console.log(error);
+      });
   }
 
   render() {
@@ -43,15 +65,15 @@ class DetailsBox extends Component {
       <Panel align="center" p={10}>
         <Box width={1}>
           <img src={idCard} height="35px" />
-          <p><b>Host</b> {this.props.device}</p>
+          <p><b>Host</b> {this.state.host}</p>
         </Box>
         <Box width={1}>
           <img src={monitor} height="35px" />
-          <p><b>Operating System</b> {this.props.system}</p>
+          <p><b>OS</b> {this.state.system}</p>
         </Box>
         <Box width={1}>
           <img src={settings} height="35px" />
-          <p><b>Version</b> {this.props.version}</p>
+          <p><b>Version</b> {this.state.version}</p>
         </Box>
       </Panel>
     );

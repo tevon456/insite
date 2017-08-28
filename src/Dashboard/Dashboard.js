@@ -33,29 +33,12 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    var _this = this;
-
-    axios
-      .get("/initial")
-      .then(function(response) {
-        var data = response.data;
-        console.log(data);
-        _this.setState({
-          data: response.data
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
-
   render() {
     return (
       <div>
         <NavBar />
         <Container>
-          <GraphBox agentId={this.state.data.agent} data={this.state.data} />
+          <GraphBox />
         </Container>
         <Footer />
       </div>
