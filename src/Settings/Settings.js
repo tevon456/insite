@@ -1,120 +1,124 @@
-/**
- * Component: Settings
- * Purpose: Configuration and Validation of yaml file.
- * Properties:
- *  data: Data object from API request
- **/
+import React, { Component } from "react";
+import { Grid, Flex, Box } from "grid-styled";
+import styled from "styled-components";
 
-//React and React Bootstrap imports
-import React, {Component, Text} from 'react';
-import {
-  Col,
-  Row,
-  ControlLabel,
-  FormControl,
-  Grid,
-  Panel,
-  Well,
-  Button,
-} from 'react-bootstrap';
-import Navbar from '../Navbar/Navbar.js';
-import Footer from '../Dashboard/Footer/Footer.js';
+import NavBar from "../Navbar/Navbar.js";
+import Footer from "../Dashboard/Footer/Footer.js";
+
+const Container = styled(Box)`
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-shadow: 3px 3px 5px 3px #ccc;
+`;
+
+const SubmitButton = styled.button`
+  display: inline-block;
+  text-align: center;
+	border-radius: 3px;
+	padding: 0.5rem 0;
+	margin: 0.5rem 1rem;
+	width: 11rem;
+  margin-top: 20px;
+	background: transparent;
+	color: #3ebc7b;
+	border: 2px solid #3ebc7b;
+  &:hover {
+    background:#3ebc7b;
+    color: white;
+  }
+`;
+
+const PaddedBox = styled(Box)`
+    padding:10px;
+`;
 
 class Settings extends Component {
-  constructor () {
-    super ();
+  constructor(props) {
+    super(props);
+
     this.state = {
-      data: [],
+      logFile: "",
+      logDirectory: "",
+      listenAddress: "",
+      port: "",
+      infosetAddress: "",
+      infosetPort: ""
     };
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <Navbar />
-
-        <form className="container">
-          <Grid>
-            <Row className="show-grid">
-              <Well>
-
-                <ControlLabel>Log File</ControlLabel>
-                <FormControl
+        <NavBar />
+        <Container>
+          <Flex align="center" direction="column">
+            <PaddedBox width={1 / 2}>
+              <Grid width={1 / 2}>
+                <label>Log File</label>
+              </Grid>
+              <Grid width={1 / 2}>
+                <input
                   type="text"
-                  value={this.state.value}
-                  placeholder="log/garnet.log"
+                  id="log-file"
+                  placeholder="/path/to/log/file"
                 />
+              </Grid>
+            </PaddedBox>
+            <PaddedBox width={1 / 2}>
+              <Grid width={1 / 2}>
+                <label>Log Directory</label>
 
-                <ControlLabel>Log Level</ControlLabel>
-                <FormControl componentClass="select" placeholder="select">
-                  <option value="other">info</option>
-                </FormControl>
+              </Grid>
+              <Grid width={1 / 2}>
+                <input type="text" id="log-directory" placeholder="/log" />
 
-                <ControlLabel>agent_cache_directory</ControlLabel>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="cache"
-                />
+              </Grid>
+            </PaddedBox>
+            <PaddedBox width={1 / 2}>
+              <Grid width={1 / 2}>
+                <label>Listen Address</label>
+              </Grid>
+              <Grid>
+                <input type="text" placeholder="127.0.0.1" />
+              </Grid>
+            </PaddedBox>
+            <PaddedBox width={1 / 2}>
+              <Grid width={1 / 2}>
+                <label>Port</label>
+              </Grid>
+              <Grid width={1 / 2}>
+                <input type="text" placeholder="5000" />
 
-                <ControlLabel>language</ControlLabel>
-                <FormControl componentClass="select" placeholder="select">
-                  <option value="other">en</option>
-                </FormControl>
-
-                <ControlLabel>interval</ControlLabel>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="100"
-                />
-
-                <ControlLabel>agent_subprocesses</ControlLabel>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="10"
-                />
-
-                <ControlLabel>listen_address</ControlLabel>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="127.0.0.1"
-                />
-
-                <ControlLabel>bind_port</ControlLabel>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="5000"
-                />
-              </Well>
-            </Row>
-          </Grid>
-        </form>
-
-        <Col xs={8} xsOffset={2}>
-          <Button
-            bsStyle="success"
-            bsSize="large"
-            block
-            style={{marginBottom: '30px'}}
-          >
-            Save
-          </Button>
-        </Col>
-
+              </Grid>
+            </PaddedBox>
+            <PaddedBox width={1 / 2}>
+              <Grid width={1 / 2}>
+                <label>Infoset Address</label>
+              </Grid>
+              <Grid width={1 / 2}>
+                <input type="text" placeholder="0.0.0.0" />
+              </Grid>
+            </PaddedBox>
+            <PaddedBox width={1 / 2}>
+              <Grid width={1 / 2}>
+                <label>Infoset Port</label>
+              </Grid>
+              <Grid width={1 / 2}>
+                <input type="text" placeholder="6000" />
+              </Grid>
+            </PaddedBox>
+            <SubmitButton>Save</SubmitButton>
+          </Flex>
+        </Container>
         <Footer />
       </div>
     );
   }
 }
 
-//Default properties
-Settings.defaultProps = {
-  data: [],
-};
-
-//Exports class to Global namespace
 export default Settings;
