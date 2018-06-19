@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Grid, Flex, Box } from "grid-styled";
 import styled from "styled-components";
 
-import NavBar from "../Navbar/Navbar.js";
-import Footer from "../Dashboard/Footer/Footer.js";
+import NavBar from "Components/Navbar/Navbar.js";
+import Footer from "Components/Dashboard/Footer/Footer.js";
 
 const Container = styled(Box)`
   max-width: 1024px;

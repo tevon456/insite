@@ -10,8 +10,8 @@ import { get } from "axios";
 
 import styled from "styled-components";
 import { Flex, Grid, Box } from "grid-styled";
-import Navbar from "../Navbar/Navbar.js";
-import Footer from "../Dashboard/Footer/Footer.js";
+import NavBar from "Components/Navbar/Navbar.js";
+import Footer from "Components/Dashboard/Footer/Footer.js";
 import AgentPanel from "./AgentPanel/AgentPanel.js";
 
 const Container = styled(Box)`

@@ -5,7 +5,7 @@
  **/
 
 import React, { Component } from "react";
-import Loading from "./Loading/Loading.js";
+import Loading from "Components/Loading/Loading.js";
 
 import Loadable from "react-loadable";
 import { Router, Route, hashHistory } from "react-router";
@@ -15,22 +15,22 @@ import { Router, Route, hashHistory } from "react-router";
  * @return Main component
  */
 const AsyncDashboard = Loadable({
-  loader: () => import("./Dashboard/Dashboard.js"),
+  loader: () => import("Components/Dashboard/Dashboard.js"),
   loading: () => null
 });
 
 const AsyncAgentPage = Loadable({
-  loader: () => import("./AgentPage/AgentPage.js"),
+  loader: () => import("Components/AgentPage/AgentPage.js"),
   loading: () => null
 });
 
 const AsyncSettings = Loadable({
-  loader: () => import("./Settings/Settings.js"),
+  loader: () => import("Components/Settings/Settings.js"),
   loading: () => null
 });
 
 const AsyncDataPage = Loadable({
-  loader: () => import("./DataPage/DataPage.js"),
+  loader: () => import("Components/DataPage/DataPage.js"),
   loading: () => null
 });
 

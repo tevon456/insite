@@ -24,7 +24,11 @@ const common = {
 
   resolve: {
     extensions: ["*", ".jsx", ".js", ".json", ".less"],
-    modules: ["node_modules", PATHS.app]
+    modules: ["node_modules", PATHS.app],
+    alias: {
+      Components: path.resolve('./src/components'),
+
+    },
   },
 
   module: {

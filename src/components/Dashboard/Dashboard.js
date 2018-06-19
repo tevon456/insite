@@ -14,7 +14,7 @@ import styled from "styled-components";
 import { Box } from "grid-styled";
 
 //Import sub components
-import NavBar from "../Navbar/Navbar.js";
+import NavBar from "Components/Navbar/Navbar.js";
 import DetailsBox from "./DetailsBox/DetailsBox.js";
 import GraphBox from "./GraphBox/GraphBox.js";
 import Footer from "./Footer/Footer";
