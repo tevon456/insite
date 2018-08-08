@@ -1,3 +1,5 @@
+import React, { Component } from 'react'
+ 
 const MyLoadingComponent = ({ isLoading, error }) => {
   // Handle the loading state
   if (isLoading) {

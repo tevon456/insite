@@ -1,7 +1,7 @@
 {
   "name": "garnet",
   "version": "1.1.10",
-  "description": "React based Dashboard that uses infoset-ng as data store",
+  "description": "Data dashboard",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest -u",
@@ -57,6 +57,7 @@
     "react-bootstrap": "^0.30.10",
     "react-dom": "^15.6.1",
     "react-router": "^3.0.1",
+    "react-scripts": "^1.1.4",
     "recharts": "^0.20.2",
     "rxjs": "^5.4.2",
     "strman": "^2.0.0",
