@@ -7,28 +7,33 @@ import {
 
 const initialState = {
 
+  status: "pending",
   data: []
 
 };
 
 
-
 export default function chartReducer(state = initialState, action) {
 
- 
   switch (action.type) {
 
     case FETCH_CHART_DATA_REQUEST:
-      return initialState;
+      return state;
 
     case FETCH_CHART_DATA_ERROR:
-      //return Object.assign({}, state, {error: action.error});
+      return { ...state,
+        status: 'error',
+        data: []
+      }
 
     case FETCH_CHART_DATA_SUCCESS:
 
-    return Object.assign({}, state, {data: action.json});
+      return { ...state,
+        status: 'success',
+        data: action.data
+      }
 
     default:
-      return initialState;
+      return state;
   }
 }

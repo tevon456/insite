@@ -16,22 +16,22 @@ import { Flex, Box, Grid } from "grid-styled";
 import DetailsBox from "../DetailsBox/DetailsBox";
 
 const AsyncCpuStackChart = Loadable({
-  loader: () => import("./CpuStackChart/CpuStackChart.js"),
+  loader: () => import("./CpuStackChart"),
   loading: () => null
 });
 
 const AsyncLoadStackChart = Loadable({
-  loader: () => import("./LoadStackChart/LoadStackChart.js"),
+  loader: () => import("./LoadStackChart"),
   loading: () => null
 });
 
 const AsyncMemoryStackChart = Loadable({
-  loader: () => import("./MemoryStackChart/MemoryStackChart.js"),
+  loader: () => import("./MemoryStackChart"),
   loading: () => null
 });
 
 const AsyncNetworkLineChart = Loadable({
-  loader: () => import("./NetworkLineChart/NetworkLineChart.js"),
+  loader: () => import("./NetworkLineChart"),
   loading: () => null
 });
 

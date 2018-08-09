@@ -33,7 +33,8 @@ class CpuStackChart extends Component {
   //Runs after Component is Loaded
   componentDidMount() {
     var _this = this;
-
+    {this.props.fetchChartData(this.props.url + this.props.agentId + "/" + this.props.stackType)}
+/*
     get(this.props.url + this.props.agentId + "/" + this.props.stackType)
       .then(function(response) {
         var data = response.data;
@@ -48,7 +49,7 @@ class CpuStackChart extends Component {
       })
       .catch(function(error) {
         console.log(error);
-      });
+      });*/
   }
 
   //Generates graph ticks for X Axis
@@ -81,12 +82,12 @@ class CpuStackChart extends Component {
         <AreaChart
           width={600}
           height={150}
-          data={this.state.data}
+          data={this.props.data}
           margin={{ top: 10, right: 0, left: 0, bottom: 30 }}
         >
           <XAxis
             dataKey="timestamp"
-            ticks={this.getTicks(this.state.data)}
+            ticks={this.getTicks(this.props.data)}
             tickFormatter={this.dateFormat}
           />
           <YAxis />

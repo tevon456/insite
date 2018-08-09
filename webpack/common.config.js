@@ -26,7 +26,13 @@ const common = {
     extensions: ["*", ".jsx", ".js", ".json", ".less"],
     modules: ["node_modules", PATHS.app],
     alias: {
+      actions: path.resolve('./src/actions'),
       Components: path.resolve('./src/components'),
+      reducers: path.resolve('./src/reducers'),
+      store: path.resolve('./src/store'),
+      types: path.resolve('./src/types')
+
+
 
     },
   },
