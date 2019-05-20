@@ -1,95 +1,23 @@
-node_modules/**
-#ignore luke's code-style test object script
-test.py
-# Ignore all vim / vi temporary files
-# Created by https://www.gitignore.io/api/vim
-.idea*
-### Vim ###
-# swap
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-# session
-Session.vim
-# temporary
-.netrwhist
-*~
-# auto-generated tag files
-tags
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-*.swp
-*.un~
-*~
-.#*
-__pycache__
-__pycache__/
-*.py[cod]
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-#############################################################################
-# <Developer Section>
-# Placed to reduce the risk of contributors uploading sensitive data
-#############################################################################
+# testing
+/coverage
 
-# Ignore hidden environment files / directory
-*.garnet
+# production
+/build
 
-# Ignore files in these directories and ALL subdirectories
-dist/**
-data/**
-log/**
-cache/**
-static/node_modules/**
-www/static/img/**
-bin/agents/non-standard/**
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Ignore files in these directories,  _BUT_
-# their subdirectories will be placed in the repository.
-foo/*
-
-# Distribution / packaging
-.Python
-env/
-venv/
-bin/garnet
-build/
-develop-eggs/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-#dist/
-var/
-include/
-*.egg-info/
-.installed.cfg
-*.egg
-# pyenv
-.python-version
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
-pip-selfcheck.json
-
-
-# There are exceptions
-!etc/.gitignore
-!data/snmp/.gitignore
-!data/aux/.gitignore
-!www/static/.gitignore
-!.gitignore
-!README
-!*.md
-
-#############################################################################
-# </Developer Section>
-#############################################################################
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
