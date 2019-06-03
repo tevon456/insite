@@ -1,27 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Sidebar from './components/Sidebar'
+import { Router } from '@reach/router'
+// eslint-disable-next-line
+import styled from 'styled-components/macro'
+
+import Home from './Home'
+import { Provider } from './context'
+import ClientMenu from './components/ClientMenu'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button>New Message</Button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Provider>
+      <div className="App">
+        <header className="App-header" />
+        <div
+          css={`
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+          `}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <Sidebar>
+            <h4>Clients</h4>
+            <ClientMenu />
+          </Sidebar>
+          <Router>
+            <Home path="/" />
+          </Router>
+        </div>
+      </div>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
