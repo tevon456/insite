@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from './components/Sidebar'
-import { Router } from '@reach/router'
+import { Router, Link } from '@reach/router'
 // eslint-disable-next-line
 import styled from 'styled-components/macro'
 
@@ -22,6 +22,8 @@ function App() {
           <Sidebar>
             <h4>Clients</h4>
             <ClientMenu />
+            <Link to="/settings">Settings</Link>
+            <Link to="/login">Log In</Link>
           </Sidebar>
           <Router>
             <Home path="/" />
