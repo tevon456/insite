@@ -9,7 +9,6 @@ class Sidebar extends React.Component {
       <div
         css={`
           position: sticky;
-          width: 300px;
           height: 100vh;
           color: ${textForeground};
           border: none;
@@ -40,6 +39,8 @@ class Sidebar extends React.Component {
         </div>
         <div
           css={`
+            display: grid;
+            grid-template-rows: 80px 5fr 1fr;
             padding: 20px;
             margin: 0 auto;
             text-align: center;
