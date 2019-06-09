@@ -1,15 +1,31 @@
 import React from 'react'
 // eslint-disable-next-line
 import styled from 'styled-components/macro'
+import { background } from 'insite-ui'
+import MemoryCard from './components/MemoryCard'
+import CpuCard from './components/CpuCard'
 
-function Home() {
+function Home(props) {
   return (
     <div
       css={`
-        padding: 20px 20px 20px 20px;
+        background: ${background};
+        padding-top: 20px;
+        padding-left: 20px;
+        height: 100%;
       `}
     >
-      <h1>Dashboard</h1>
+      <h2>Dashboard</h2>
+      <div
+        css={`
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 20px;
+        `}
+      >
+        <CpuCard />
+        <MemoryCard />
+      </div>
     </div>
   )
 }
