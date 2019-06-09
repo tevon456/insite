@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useQuery } from 'urql'
 import { Link } from '@reach/router'
 import gql from 'graphql-tag'
@@ -16,11 +16,6 @@ const clientsQuery = gql`
 function ClientMenu() {
   const [res, executeQuery] = useQuery({ query: clientsQuery })
 
-  const refetch = useCallback(
-    () => executeQuery({ requestPolicy: 'network-only' }),
-    [executeQuery]
-  )
-
   const getContent = () => {
     if (res.fetching || res.data === undefined) {
       return <div>Loading..</div>
@@ -37,15 +32,21 @@ function ClientMenu() {
         `}
       >
         {res.data.getAllClients.map(({ id }) => (
-          <Link
-            key={id}
-            to={id}
+          <li
             css={`
-              color: white;
+              padding-top: 5px;
             `}
+            key={id}
           >
-            {id}
-          </Link>
+            <Link
+              to={id}
+              css={`
+                color: white;
+              `}
+            >
+              {id.substring(0, 8)}
+            </Link>
+          </li>
         ))}
       </ul>
     )
