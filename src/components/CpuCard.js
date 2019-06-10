@@ -7,9 +7,9 @@ import styled from 'styled-components/macro'
 import Card from './Card'
 import cpuchip from '../images/cpu_chip.svg'
 
-const query = gql`
+const query = clientId => gql`
   {
-    getAllData(id: "f452a583-6e9f-4d5a-9eda-b8b21356e68a") {
+    getAllData(id: "${clientId}") {
       cpu {
         manufacturer
         brand
@@ -26,9 +26,8 @@ const query = gql`
   }
 `
 
-function CpuCard() {
-  const [res, executeQuery] = useQuery({ query })
-
+function CpuCard({ clientId = '' }) {
+  const [res, executeQuery] = useQuery({ query: query(clientId) })
   const getContent = () => {
     if (res.fetching || res.data === undefined) {
       return <div>Loading..</div>
