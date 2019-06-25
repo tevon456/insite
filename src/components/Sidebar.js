@@ -9,57 +9,54 @@ const ResponsiveSideBar = styled.div`
     display: none;
   }
 `
-
-class Sidebar extends React.Component {
-  render() {
-    return (
-      <ResponsiveSideBar
-        css={`
-          min-width: 158px;
-          position: sticky;
-          height: 100vh;
-          color: ${textForeground};
+function Sidebar(props) {
+  return (
+    <ResponsiveSideBar
+      css={`
+        min-width: 158px;
+        position: sticky;
+        height: 100vh;
+        color: ${textForeground};
+        border: none;
+        background: ${secondary};
+        &:focus {
           border: none;
-          background: ${secondary};
-          &:focus {
-            border: none;
-            outline: none;
-          }
+          outline: none;
+        }
+      `}
+    >
+      <div
+        css={`
+          background: ${primary};
+          padding: 3px;
+          text-align: center;
         `}
       >
-        <div
+        <h1
           css={`
-            background: ${primary};
-            padding: 3px;
-            text-align: center;
+            font-family: Pridi;
+            font-weight: 400;
+            font-size: 40px;
+            letter-spacing: 1px;
           `}
         >
-          <h1
-            css={`
-              font-family: Pridi;
-              font-weight: 400;
-              font-size: 40px;
-              letter-spacing: 1px;
-            `}
-          >
-            insite
-          </h1>
-        </div>
-        <div
-          css={`
-            display: grid;
-            grid-template-rows: 80px 5fr 1fr;
-            padding: 20px;
-            margin: 0 auto;
-            text-align: center;
-            font-family: Lato, san-serif;
-          `}
-        >
-          {this.props.children}
-        </div>
-      </ResponsiveSideBar>
-    )
-  }
+          {props.name}
+        </h1>
+      </div>
+      <div
+        css={`
+          display: grid;
+          grid-template-rows: 80px 5fr 1fr;
+          padding: 20px;
+          margin: 0 auto;
+          text-align: center;
+          font-family: Lato, san-serif;
+        `}
+      >
+        {props.children}
+      </div>
+    </ResponsiveSideBar>
+  )
 }
 
 export default Sidebar

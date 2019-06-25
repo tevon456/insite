@@ -47,7 +47,7 @@ function App() {
       >
         <header className="App-header" />
         <ResponsiveDashboard>
-          <Sidebar>
+          <Sidebar name="insite">
             <h4>Clients</h4>
             <ClientMenu />
             <Link to="/settings">Settings</Link>
