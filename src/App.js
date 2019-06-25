@@ -9,6 +9,16 @@ import { Provider } from './context'
 import ClientMenu from './components/ClientMenu'
 import CpuCard from './components/CpuCard'
 import MemoryCard from './components/MemoryCard'
+import { device } from './constants/devices'
+
+const ResponsiveDashboard = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+
+  @media ${device.tabletS} {
+    grid-template-columns: 5fr;
+  }
+`
 
 function Dashboard({ clientId }) {
   return (
@@ -29,12 +39,7 @@ function App() {
     <Provider>
       <div className="App">
         <header className="App-header" />
-        <div
-          css={`
-            display: grid;
-            grid-template-columns: 1fr 5fr;
-          `}
-        >
+        <ResponsiveDashboard>
           <Sidebar>
             <h4>Clients</h4>
             <ClientMenu />
@@ -46,7 +51,7 @@ function App() {
               <Dashboard path="/:clientId" />
             </Home>
           </Router>
-        </div>
+        </ResponsiveDashboard>
       </div>
     </Provider>
   )
