@@ -27,6 +27,8 @@ function Dashboard({ clientId }) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
+        overflow-y: scroll;
+        overflow-x: hidden;
       `}
     >
       <CpuCard clientId={clientId} />
@@ -37,7 +39,12 @@ function Dashboard({ clientId }) {
 function App() {
   return (
     <Provider>
-      <div className="App">
+      <div
+        className="App"
+        css={`
+          overflow: hidden;
+        `}
+      >
         <header className="App-header" />
         <ResponsiveDashboard>
           <Sidebar>
