@@ -10,6 +10,7 @@ import ClientMenu from './components/ClientMenu'
 import CpuCard from './components/CpuCard'
 import MemoryCard from './components/MemoryCard'
 import { device } from './constants/devices'
+import BottomSheet from './components/BottomSheet'
 
 const ResponsiveDashboard = styled.div`
   display: grid;
@@ -53,6 +54,12 @@ function App() {
             <Link to="/settings">Settings</Link>
             <Link to="/login">Log In</Link>
           </Sidebar>
+          <BottomSheet>
+            <h4 style={{ color: 'white', textAlign: 'center' }}>Clients</h4>
+            <ClientMenu />
+            <Link to="/settings">Settings</Link>
+            <Link to="/login">Log In</Link>
+          </BottomSheet>
           <Router>
             <Home path="/">
               <Dashboard path="/:clientId" />
