@@ -7,11 +7,10 @@ import styled from 'styled-components/macro'
 import Home from './Home'
 import { Provider } from './context'
 import ClientMenu from './components/ClientMenu'
+import Default from './components/Default'
 import CpuCard from './components/CpuCard'
 import MemoryCard from './components/MemoryCard'
-function Default() {
-  return <div>Default</div>
-}
+
 function Dashboard({ clientId }) {
   return (
     <div
