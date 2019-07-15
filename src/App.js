@@ -9,13 +9,15 @@ import { Provider } from './context'
 import ClientMenu from './components/ClientMenu'
 import CpuCard from './components/CpuCard'
 import MemoryCard from './components/MemoryCard'
-
+function Default() {
+  return <div>Default</div>
+}
 function Dashboard({ clientId }) {
   return (
     <div
       css={`
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         grid-gap: 20px;
       `}
     >
@@ -39,10 +41,10 @@ function App() {
             <h4>Clients</h4>
             <ClientMenu />
             <Link to="/settings">Settings</Link>
-            <Link to="/login">Log In</Link>
           </Sidebar>
           <Router>
             <Home path="/">
+              <Default path="/" />
               <Dashboard path="/:clientId" />
             </Home>
           </Router>

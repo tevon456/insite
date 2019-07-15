@@ -40,8 +40,7 @@ class Sidebar extends React.Component {
         <div
           css={`
             display: grid;
-            grid-template-rows: 80px 5fr 1fr;
-            padding: 20px;
+            grid-template-rows: 50px 5fr 1fr;
             margin: 0 auto;
             text-align: center;
             font-family: Lato, san-serif;

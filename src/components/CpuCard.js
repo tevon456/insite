@@ -36,9 +36,17 @@ function CpuCard({ clientId = '' }) {
     if (res.error) {
       return <div>Oh no! Something went wrong!</div>
     }
-    const { manufacturer, brand, family } = res.data.getAllData.cpu
+    const { manufacturer, brand, vendor, family } = res.data.getAllData.cpu
     return (
       <Card>
+        <div
+          css={`
+            padding-bottom: 10px;
+          `}
+        >
+          <h3>CPU</h3>
+          <hr />
+        </div>
         <div
           css={`
             text-align: center;
@@ -53,6 +61,8 @@ function CpuCard({ clientId = '' }) {
           css={`
             display: grid;
             grid-template-columns: 1fr 1fr;
+            color: #727272;
+            font-size: 14px;
           `}
         >
           <p>manufacturer</p>
@@ -61,6 +71,8 @@ function CpuCard({ clientId = '' }) {
           <p>{brand}</p>
           <p>family</p>
           <p>{family}</p>
+          <p>vendor</p>
+          <p>{vendor}</p>
         </div>
       </Card>
     )
