@@ -38,6 +38,10 @@ function Sidebar(props) {
             font-weight: 400;
             font-size: 40px;
             letter-spacing: 1px;
+            display: grid;
+            grid-template-rows: 50px 5fr 1fr;
+            margin: 0 auto;
+            text-align: center;
           `}
         >
           {props.name}

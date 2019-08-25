@@ -45,6 +45,14 @@ function MemoryCard() {
       <Card>
         <div
           css={`
+            padding-bottom: 10px;
+          `}
+        >
+          <h3>Memory</h3>
+          <hr />
+        </div>
+        <div
+          css={`
             text-align: center;
           `}
         >
@@ -59,18 +67,24 @@ function MemoryCard() {
           <h3>Total Memory</h3>
           <h4>{toGB(total)} GB</h4>
         </div>
-
-        <div>
-          <p>Used</p>
-          <Progress width={use}>{use}%</Progress>
-        </div>
-        <div>
-          <p>Active</p>
-          <Progress width={use}>{use}%</Progress>
-        </div>
-        <div>
-          <p>Swap</p>
-          <Progress width={swappercent}>{swappercent}%</Progress>
+        <div
+          css={`
+            color: #727272;
+            font-size: 14px;
+          `}
+        >
+          <div>
+            <p>Used</p>
+            <Progress width={use}>{use}%</Progress>
+          </div>
+          <div>
+            <p>Active</p>
+            <Progress width={use}>{use}%</Progress>
+          </div>
+          <div>
+            <p>Swap</p>
+            <Progress width={swappercent}>{swappercent}%</Progress>
+          </div>
         </div>
       </Card>
     )

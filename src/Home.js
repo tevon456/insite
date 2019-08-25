@@ -14,7 +14,6 @@ function Home({ children }) {
       `}
     >
       <h2>Dashboard</h2>
-
       {children}
     </div>
   )

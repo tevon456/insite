@@ -7,6 +7,7 @@ import styled from 'styled-components/macro'
 import Home from './Home'
 import { Provider } from './context'
 import ClientMenu from './components/ClientMenu'
+import Default from './components/Default'
 import CpuCard from './components/CpuCard'
 import MemoryCard from './components/MemoryCard'
 import { device } from './constants/devices'
@@ -26,7 +27,7 @@ function Dashboard({ clientId }) {
     <div
       css={`
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         grid-gap: 20px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -52,7 +53,6 @@ function App() {
             <h4>Clients</h4>
             <ClientMenu />
             <Link to="/settings">Settings</Link>
-            <Link to="/login">Log In</Link>
           </Sidebar>
           <BottomSheet>
             <h4 style={{ color: 'white', textAlign: 'center' }}>Clients</h4>
@@ -62,6 +62,7 @@ function App() {
           </BottomSheet>
           <Router>
             <Home path="/">
+              <Default path="/" />
               <Dashboard path="/:clientId" />
             </Home>
           </Router>

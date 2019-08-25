@@ -29,19 +29,22 @@ function ClientMenu() {
         css={`
           list-style: none;
           padding: 0;
+          background: #112434;
         `}
       >
         {res.data.getAllClients.map(({ id }) => (
           <li
             css={`
               padding-top: 5px;
+              padding: 10px;
             `}
             key={id}
           >
             <Link
               to={id}
               css={`
-                color: white;
+                text-decoration: none;
+                color: #535c6c;
               `}
             >
               {id.substring(0, 8)}
